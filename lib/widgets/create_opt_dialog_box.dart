@@ -6,6 +6,8 @@ import '../presentation/resources/index_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../data/Live_Streaming/live_streaming_login_page.dart';
+
 class CustomDialog extends StatefulWidget {
   CustomDialog({
     Key? key,
@@ -135,7 +137,13 @@ class _CustomDialogState extends State<CustomDialog>
               bgcolor: ColorManager.primary,
               prfixicon: ImageAssets.cameraIcon,
               onTap: () {
-                // Navigator.pushNamed(context, Routes.CreateLiveStoryRoute);
+                print("object");
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LiveStreamingLoginPage(),
+                    ));
+                // Navigator.pushNamed(context, Routes.LiveStreamingBasePage);
               }),
 
           ///

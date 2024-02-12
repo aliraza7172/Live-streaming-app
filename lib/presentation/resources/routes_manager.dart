@@ -35,6 +35,7 @@ import 'package:stream_up_live/presentation/stories/create_story_screen.dart';
 import 'package:stream_up_live/presentation/stories/open_story_screen.dart';
 import 'package:stream_up_live/presentation/stories/stories_screen.dart';
 import 'package:stream_up_live/presentation/welathClass/wealth_class_screen.dart';
+import '../../data/Live_Streaming/live_streaming.dart';
 import '../Setting/blocked_list_screen.dart';
 import '../Setting/faqs_screen.dart';
 import '../Setting/inbox_screen.dart';
@@ -100,6 +101,7 @@ class Routes {
   static const String LanguageScreenViewRoute = "/LanguageScreen";
   static const String ConnectWithUsScreenViewRoute = "/ConnectWithUsScreen";
   static const String FAQsScreenViewRoute = "/FAQsScreen";
+  static const String LiveStreamingBasePage = "/LiveStreamingBasePage";
 }
 
 class RouteGenerator {
@@ -121,8 +123,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ForgetPasswordScreen());
       case Routes.PublicProfilePageRoute:
         return MaterialPageRoute(builder: (_) => PublicProfilePage());
-      case Routes.createPostPage:return MaterialPageRoute(builder: (_) => CreatePostPage());
-      case Routes.createStoryPage:return MaterialPageRoute(builder: (_) => CreateStoryPage());
+      case Routes.createPostPage:
+        return MaterialPageRoute(builder: (_) => CreatePostPage());
+      case Routes.createStoryPage:
+        return MaterialPageRoute(builder: (_) => CreateStoryPage());
       // case Routes.topUserviewRoute:
       //   return MaterialPageRoute(builder: (_) => TopUserview());
       // case Routes.topTalentviewRoute:
@@ -207,6 +211,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ConnectWithUsScreen());
       case Routes.FAQsScreenViewRoute:
         return MaterialPageRoute(builder: (_) => FAQsScreen());
+      case Routes.LiveStreamingBasePage:
+        return MaterialPageRoute(
+          builder: (_) => LiveStreamingBasePage(),
+        );
       default:
         return unDefinedRoute();
     }
