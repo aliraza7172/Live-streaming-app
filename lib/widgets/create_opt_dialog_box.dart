@@ -117,18 +117,37 @@ class _CustomDialogState extends State<CustomDialog>
                 //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
                 // );
                 Navigator.pop(context);
-               Navigator.pushNamed(context, Routes.createPostPage);
+                Navigator.pushNamed(context, Routes.createPostPage);
                 // Navigator.pushNamed(context, Routes.CreatePostViewRoute);
               }),
           SizedBox(height: 5.0),
+
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///*********************** */
           socialButton(
               text: AppStrings.golive,
               color: ColorManager.white,
               bgcolor: ColorManager.primary,
               prfixicon: ImageAssets.cameraIcon,
               onTap: () {
-                Navigator.pushNamed(context, Routes.CreateLiveStoryRoute);
+                // Navigator.pushNamed(context, Routes.CreateLiveStoryRoute);
               }),
+
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///****************************** */
           SizedBox(height: 5.0),
           socialButton(
               text: AppStrings.audioLive,

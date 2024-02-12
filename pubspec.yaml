@@ -39,7 +39,7 @@ dependencies:
   responsive_sizer: ^3.1.1
   flutter_svg: ^2.0.7
   emoji_picker_flutter: ^1.6.1
-  permission_handler: ^10.3.0
+  permission_handler: ^11.2.1
   pin_code_fields: ^7.4.0
   percent_indicator: ^4.2.3
   rotated_corner_decoration: ^2.1.0+1
@@ -68,6 +68,9 @@ dependencies:
   carousel_slider: ^4.2.1
   agora_rtc_engine:
   camera: ^0.10.5+9
+  zego_uikit_prebuilt_live_streaming: ^3.1.11
+  zego_zimkit: ^1.16.1
+  # ! Zego Cloud help for a Live Streaming such as (Bigo Live, yalla Ludo)
 
 dev_dependencies:
   flutter_test:

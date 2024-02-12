@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:stream_up_live/agora/agora_widget.dart';
 import 'package:stream_up_live/widgets/create_opt_dialog_box.dart';
 import '../presentation/resources/index_manager.dart';
 
