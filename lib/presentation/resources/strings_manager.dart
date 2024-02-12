@@ -152,9 +152,11 @@ class AppStrings {
   static const String strongPasswords =
       "Strong passwords include numbers, letters, and punctuation marks.";
 //----------------------------------Api Constants------------
-  static const String appBaseUrl = "https://streamuplive.com/";
+  //static const String appBaseUrl = "https://streamuplive.com/";
+  static const String appBaseUrl = "http://13.200.56.173/";
   static const String appBaseUrl2 = "https://dmmeghlive.com/api/web/v1/";
-  static const String imgBaseUrl = "https://streamuplive.com/uploads";
+  //static const String imgBaseUrl = "https://streamuplive.com/uploads";
+  static const String imgBaseUrl = "http://13.200.56.173/uploads";
   static const String LOGIN_URI = "api/mobile/sign-in";
   static const String GENERAL_URI = "api/mobile/general";
   static const String CHECK_EMAIL = "api/mobile/email/check";

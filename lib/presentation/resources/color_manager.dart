@@ -20,7 +20,7 @@ class ColorManager {
   static Color greydarkThemeColor = Colors.grey.shade600;
   static Color hinttextdarkColor = HexColor.fromHex("#C6C6C6");
   //static Color secondarydarkColor = HexColor.fromHex("#000000");
-  static Color secondarydarkColor = HexColor.fromHex("#F5F5DC");
+  static Color secondarydarkColor = HexColor.fromHex("#5006E9");
   static Color profiledarkColor = HexColor.fromHex("#575F76");
   static Color primarydarkdarkColor = HexColor.fromHex("#303749");
   static Color navbardarkColor = HexColor.fromHex("#20242F");
