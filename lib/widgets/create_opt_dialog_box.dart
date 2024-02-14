@@ -167,7 +167,8 @@ class _CustomDialogState extends State<CustomDialog>
                 // Get.changeTheme(
                 //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
                 // );
-                Navigator.pushNamed(context, Routes.AudioLiveViewRoute);
+                Navigator.pushNamed(context, Routes.AudioLiveViewRoute,
+                );
               }),
           SizedBox(height: 10.0),
         ]);

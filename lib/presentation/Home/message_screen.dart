@@ -68,9 +68,9 @@ class _MessagesViewState extends State<MessagesView> {
           ),
           Row(
             children: [
-              SvgPicture.asset(ImageAssets.chat2UserIcon),
+              SvgPicture.asset(ImageAssets.chat2UserIcon,color: ColorManager.whiteColor,),
               SizedBox(width: 10.0),
-              SvgPicture.asset(ImageAssets.chatsettingIcon),
+              SvgPicture.asset(ImageAssets.chatsettingIcon,color: ColorManager.whiteColor),
               SizedBox(width: 10.0),
             ],
           )

@@ -11,9 +11,6 @@ import 'package:stream_up_live/presentation/createstory/audio_live_screen.dart';
 import 'package:stream_up_live/presentation/createstory/create_a_story.dart';
 import 'package:stream_up_live/presentation/createstory/create_post_screen.dart';
 import 'package:stream_up_live/presentation/createstory/creative_live_screen.dart';
-import 'package:stream_up_live/presentation/live/audio_live_users_screen.dart';
-import 'package:stream_up_live/presentation/live/live_people_screen.dart';
-import 'package:stream_up_live/presentation/live/live_screen.dart';
 import 'package:stream_up_live/presentation/login/login_screen.dart';
 import 'package:stream_up_live/presentation/profile/earning_screen.dart';
 import 'package:stream_up_live/presentation/profile/edit_profile_screen.dart';
@@ -42,6 +39,9 @@ import '../Setting/inbox_screen.dart';
 import '../Setting/privacy_screen.dart';
 import '../Setting/room_effects_screen.dart';
 import '../Setting/security_screen.dart';
+import '../live_audio_room/audio_live_users_screen.dart';
+import '../live_audio_room/live_people_screen.dart';
+import '../live_audio_room/live_screen.dart';
 import '../splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '../login/login_with_social_media_screen.dart';
@@ -106,6 +106,10 @@ class Routes {
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
+    // Retrieve the arguments
+    Map<String, dynamic>? arguments = routeSettings.arguments as Map<String, dynamic>?;
+    print('======routes---${arguments}');
+
     switch (routeSettings.name) {
       case Routes.splashRoute:
         return MaterialPageRoute(builder: (_) => SplashScreen());
@@ -164,7 +168,9 @@ class RouteGenerator {
       case Routes.AudioLiveViewRoute:
         return MaterialPageRoute(builder: (_) => AudioLiveView());
       case Routes.AudioLiveUsersViewRoute:
-        return MaterialPageRoute(builder: (_) => AudioLiveUsersView());
+        return MaterialPageRoute(builder: (_) =>
+            AudioLiveUsersView(roomID: arguments?['roomId'],
+              isHost: arguments?['isHost'],));
       case Routes.StoriesViewPageRoute:
         return MaterialPageRoute(builder: (_) => StoriesViewPage());
       case Routes.OpenStoryViewRoute:

@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -26,19 +28,23 @@ class LoginWithSocialMediaView extends StatefulWidget {
 }
 
 class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
-  bool rememberMe = false;
+  bool rememberMe = true;
   bool showButtons = false;
+  bool _visible = false;
   late VideoPlayerController _controller;
-  late Future<void> _initializeVideoPlayerFuture;
+
 
   @override
   void initState() {
     super.initState();
-    // _controller =
-    //     VideoPlayerController.asset(ImageAssets.loginSocialMediaDarkVideo);
-    _initializeVideoPlayerFuture = _controller.initialize();
-    _controller.setLooping(true);
-    _controller.play();
+    _controller = VideoPlayerController.asset(ImageAssets.loginSocialMediaDarkVideo)
+      ..initialize().then((_) {
+        // Ensure the first frame is shown after the video is initialized
+        _controller.play();
+        _controller.setLooping(true);
+        setState(() {});
+      });
+
   }
 
   @override
@@ -133,47 +139,47 @@ class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
                                   }
                                 }),
 
-                            facebookGoogleBtn(
-                              isLoader: _.isLoading,
-                              onFacebookTab: () {
-                                if (rememberMe) {
-                                  Navigator.pushNamed(
-                                      context, Routes.loginRoute);
-                                } else {
-                                  showCustomSnackBar(
-                                      'Please Accept Terms and conditions'.tr);
-                                }
-                              },
-                              onGoogleTab: () async {
-                                if (rememberMe) {
-                                  UserCredential? userCredential =
-                                      await signUpWithGoogle();
-                                  if (userCredential != null) {
-                                    final String? _name =
-                                        userCredential.user!.displayName;
-                                    final String? _email =
-                                        userCredential.user!.email;
-                                    final String? _password =
-                                        userCredential.user!.uid;
-                                    final String? _number =
-                                        userCredential.user!.phoneNumber;
-                                    _checkEmail(_, _email, _password, _name,
-                                        _number.toString());
-                                    // _signup(_,_email,_password,_name,_number.toString());
-                                  }
-                                } else {
-                                  showCustomSnackBar(
-                                      'Please Accept Terms and conditions'.tr);
-                                }
-                              },
-                            ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                      TermAndCondition(),
+                           facebookGoogleBtn(
+                             isLoader: _.isLoading,
+                             onFacebookTab: () {
+                               if (rememberMe) {
+                                 _controller.pause();
+                                 Navigator.pushNamed(context, Routes.loginRoute);
+                               } else {
+                                 showCustomSnackBar(
+                                     'Please Accept Terms and conditions'.tr);
+                               }
+                             },
+                             onGoogleTab: () async {
+                               if (rememberMe) {
+                                 UserCredential? userCredential =
+                                 await signUpWithGoogle();
+                                 if (userCredential != null) {
+                                   final String? _name =
+                                       userCredential.user!.displayName;
+                                   final String? _email =
+                                       userCredential.user!.email;
+                                   final String? _password =
+                                       userCredential.user!.uid;
+                                   final String? _number =
+                                       userCredential.user!.phoneNumber;
+                                   _checkEmail(_, _email, _password, _name,
+                                       _number.toString());
+                                   // _signup(_,_email,_password,_name,_number.toString());
+                                 }
+                               } else {
+                                 showCustomSnackBar(
+                                     'Please Accept Terms and conditions'.tr);
+                               }
+                             },
+                           ),
+                           SizedBox(
+                             height: 20.0,
+                           ),
+                         ],
+                       ),
+                     ),
+                     TermAndCondition(),
 
                       // Center(
                       //   child: CircularIconButton(
@@ -193,7 +199,7 @@ class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
   _getVideoBackground() {
     return AnimatedOpacity(
       duration: Duration(milliseconds: 1000),
-      opacity: 1,
+      opacity:  1.0,
       child: VideoPlayer(_controller),
     );
   }

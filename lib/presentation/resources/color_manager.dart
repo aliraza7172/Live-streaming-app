@@ -14,7 +14,6 @@ class ColorManager {
   static Color primaryOpacity70 = HexColor.fromHex("#B3ED9728");
   static Color googlebtn = HexColor.fromHex("#EE695D");
   static Color fbbtn = HexColor.fromHex("#157DC3");
-
 //------------------------------------darkThemeColor---------
 
   static Color primarydarkColor = HexColor.fromHex("#535C73");
@@ -74,6 +73,7 @@ class ColorManager {
   static Color transparent = Colors.transparent;
   static Color transparentLight = Color.fromARGB(82, 0, 0, 0);
   static Color skyBlue = Color.fromARGB(255, 6, 214, 158);
+  static Color grey400 = Color(0XFFB4ACAC);
 }
 
 extension HexColor on Color {

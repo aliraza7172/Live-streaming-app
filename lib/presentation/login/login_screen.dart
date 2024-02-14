@@ -59,6 +59,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     SizedBox(height: AppSize.s28.vs),
                     CustomeTextFormField(
+                      style: TextStyle(color: ColorManager.white),
                       hintText: AppStrings.emailOrPhoneNumber,
                       controller: _emailController,
                       fillColor: ColorManager.primarydarkColor,
@@ -90,6 +91,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     SizedBox(height: 2.vs),
                     CustomeTextFormField(
+                      style: TextStyle(color: ColorManager.white),
                       obscureText: true,
                       controller: _passwordController,
                       hintText: AppStrings.password,

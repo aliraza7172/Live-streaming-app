@@ -110,7 +110,7 @@ class _AudioLiveViewState extends State<AudioLiveView> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "Add a tittle a chat",
+                                  "Add a title a chat",
                                   style: TextStyle(
                                       fontSize: 18.mv,
                                       color: ColorManager.white),
@@ -230,7 +230,9 @@ class _AudioLiveViewState extends State<AudioLiveView> {
                     ),
                     onTap: () {
                       Navigator.pushNamed(
-                          context, Routes.AudioLiveUsersViewRoute);
+                          context, Routes.AudioLiveUsersViewRoute,
+                          arguments: {'roomId':'11223344','isHost':true}
+                      );
                     }),
               ),
               SizedBox(height: 10.0),

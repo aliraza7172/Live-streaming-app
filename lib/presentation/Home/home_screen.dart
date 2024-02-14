@@ -41,8 +41,8 @@ class _HomeViewState extends State<HomeView> {
             });
           },
           children: <Widget>[
-            DeshboardView(),
             StreamsView(),
+            DeshboardView(),
             MessagesView(),
             NotificationView(),
             ProfileView(),
@@ -62,11 +62,11 @@ class _HomeViewState extends State<HomeView> {
         },
         items: [
           bottomNavbaritem(
-              title: "Home", IconName: ImageAssets.homeIcon, currentindex: 0),
-          bottomNavbaritem(
               title: "Streams",
               IconName: ImageAssets.streamIcon,
-              currentindex: 1),
+              currentindex: 0),
+          bottomNavbaritem(
+              title: "Home", IconName: ImageAssets.homeIcon, currentindex:1),
           bottomNavbaritem(
               title: "Messages",
               IconName: ImageAssets.MessagesIcon,

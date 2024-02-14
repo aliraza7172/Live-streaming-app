@@ -339,6 +339,7 @@ class _ProfileViewState extends State<ProfileView> {
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: SvgPicture.asset(
+                    color: ColorManager.white,
                   profiledata.iconpath ?? ImageAssets.userIcon),
             ),
           ),

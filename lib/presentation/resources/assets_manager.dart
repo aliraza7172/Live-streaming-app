@@ -1,11 +1,12 @@
 const String IMAGE_PATH = "assets/images";
 const String ICON_PATH = "assets/icons/SVG";
+const String VIDEO_PATH = "assets/videos";
 
 class ImageAssets {
   //Svg icons
 
   ///appLogo
-  static const String applogo = "$IMAGE_PATH/login_logo.png";
+  static const String applogo = "$IMAGE_PATH/yammy.png";
 
   static const String pkIcon = "$ICON_PATH/pk.svg";
   static const String barIcon = "$ICON_PATH/bar.svg";
@@ -232,7 +233,7 @@ class ImageAssets {
   static const String dollarIcon = "$ICON_PATH/dollar.svg";
   static const String rewardIcon = "$ICON_PATH/reward.svg";
   static const String recordIcon = "$ICON_PATH/record.svg";
-  static const String googleIcon = "$ICON_PATH/google.svg";
+  static const String googleIcon = "$ICON_PATH/google2.svg";
   static const String volumeIcon = "$ICON_PATH/volume.svg";
   static const String cameraIcon = "$ICON_PATH/camera.svg";
   static const String searchIcon = "$ICON_PATH/search.svg";
@@ -302,4 +303,5 @@ class ImageAssets {
   static const String userSettingStreamLive =
       "$IMAGE_PATH/userSettingStream.png";
   static const String musicStream = "$IMAGE_PATH/musicStream.png";
+  static const String loginSocialMediaDarkVideo = "$VIDEO_PATH/login_bg.mp4";
 }
