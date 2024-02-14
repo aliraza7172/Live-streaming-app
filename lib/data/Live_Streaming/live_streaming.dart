@@ -4,6 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:stream_up_live/presentation/resources/index_manager.dart';
 import 'package:zego_uikit_prebuilt_live_streaming/zego_uikit_prebuilt_live_streaming.dart';
+import 'Components/leave_confirmation_dialog.dart';
 import 'zego_info.dart';
 
 class LiveStreamingBasePage extends StatefulWidget {
@@ -71,7 +72,7 @@ class ZegoLiveStream extends StatefulWidget {
 class _ZegoLiveStreamState extends State<ZegoLiveStream> {
   late Size size;
 
-  bool isPublish = false;
+  bool isPublish = true;
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.sizeOf(context);
@@ -92,9 +93,21 @@ class _ZegoLiveStreamState extends State<ZegoLiveStream> {
         //     showHostInformation(host);
         //   },
         // )),
+
+        events: ZegoUIKitPrebuiltLiveStreamingEvents(
+          onLeaveConfirmation: (
+            ZegoLiveStreamingLeaveConfirmationEvent event,
+
+            /// defaultAction to return to the previous page
+            Future<bool> Function() defaultAction,
+          ) async {
+            return await setUpLeaveConfirmationDialog(context);
+          },
+        ),
         config: widget.userId == "111111"
             ? ZegoUIKitPrebuiltLiveStreamingConfig.host(plugins: [])
             : ZegoUIKitPrebuiltLiveStreamingConfig.audience()
+
           // ! pictureInPicture Allow .
           ..layout = ZegoLayout.pictureInPicture(
             smallViewPosition: ZegoViewPosition.bottomRight,
@@ -105,6 +118,21 @@ class _ZegoLiveStreamState extends State<ZegoLiveStream> {
           ..turnOnMicrophoneWhenJoining = true
           // ! preview Video Live Page
           ..preview.showPreviewForHost = true
+          // ..preview.startLiveButtonBuilder = (context, startLive) {
+          //   return MaterialButton(
+          //     shape: BeveledRectangleBorder(
+          //         borderRadius: BorderRadius.circular(8)),
+          //     minWidth: size.width * 0.3,
+          //     color: Colors.blueAccent,
+          //     onPressed: () {
+          //       setState(() {
+          //         isPublish = true;
+          //         startLive;
+          //       });
+          //     },
+          //     child: Text("Start"),
+          //   );
+          // }
           //
           ..advanceConfigs = {AppStrings.Bubbles: "Jawad"}
           ..useSpeakerWhenJoining = true
@@ -116,7 +144,6 @@ class _ZegoLiveStreamState extends State<ZegoLiveStream> {
           ]
           ..topMenuBar.backgroundColor = ColorManager.transparent
           ..topMenuBar.height = 60
-          ..topMenuBar.showCloseButton = true
           ..topMenuBar.buttons = [ZegoLiveStreamingMenuBarButtonName.chatButton]
           ..topMenuBar.hostAvatarBuilder = (ZegoUIKitUser host) {
             return topMenuBarHostAvatarBuilder(host: host, size: size);
@@ -140,8 +167,8 @@ class _ZegoLiveStreamState extends State<ZegoLiveStream> {
           ..avatarBuilder = (context, size, user, extraInfo) {
             return user != null ? avatarBuilderChatMessage() : const SizedBox();
           }
-          ..memberList = ZegoLiveStreamingMemberListConfig()
           // ! New Member Top Button
+          ..memberList = ZegoLiveStreamingMemberListConfig()
           ..memberButton = ZegoLiveStreamingMemberButtonConfig(
             builder: (memberCount) {
               // join this member
@@ -152,6 +179,9 @@ class _ZegoLiveStreamState extends State<ZegoLiveStream> {
               }
             },
           )
+          ..turnOnCameraWhenCohosted = () {
+            return false;
+          }
           // ! AudioVideoView BackgroundBuilder
           ..audioVideoView.backgroundBuilder = (BuildContext context, Size size,
               ZegoUIKitUser? user, Map extraInfo) {
@@ -211,27 +241,27 @@ class _ZegoLiveStreamState extends State<ZegoLiveStream> {
           Expanded(
             flex: 2,
             child: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+              padding: const EdgeInsets.only(left: 8.0, right: 5),
               child: Container(
                 height: 80,
-                width: 100,
+                width: 80,
                 color: ColorManager.transparent,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: size.width * 0.1),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          foregroundIconsStream(
-                              size: size,
-                              imagePath: ImageAssets.userSettingStreamLive),
-                          foregroundIconsStream(
-                              size: size, imagePath: ImageAssets.musicStream),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        foregroundIconsStream(
+                            size: size,
+                            imagePath: ImageAssets.userSettingStreamLive),
+                        SizedBox(
+                          width: size.width * 0.02,
+                        ),
+                        foregroundIconsStream(
+                            size: size, imagePath: ImageAssets.musicStream),
+                      ],
                     ),
                     Container(
                         height: size.height * 0.05,
@@ -310,7 +340,7 @@ class _ZegoLiveStreamState extends State<ZegoLiveStream> {
             Icons.person,
             color: Color.fromARGB(255, 6, 214, 158),
           ),
-          AutoSizeText("${memberCount}85 ",
+          AutoSizeText("${memberCount} ",
               style: TextStyle(color: Color.fromARGB(255, 6, 214, 158))),
         ],
       ),

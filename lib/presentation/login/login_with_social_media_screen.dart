@@ -1,21 +1,22 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:googleapis/keep/v1.dart';
-import 'package:stream_up_live/controller/auth_controller.dart';
-import 'package:stream_up_live/presentation/Home/home_screen.dart';
-import 'package:stream_up_live/presentation/Mixins/size.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:video_player/video_player.dart';
+
+import 'package:stream_up_live/controller/auth_controller.dart';
+import 'package:stream_up_live/presentation/Home/home_screen.dart';
+import 'package:stream_up_live/presentation/Mixins/size.dart';
 import 'package:stream_up_live/presentation/RecomendedTalents/recomended_talents_screen.dart';
 import 'package:stream_up_live/widgets/custom_snackbar.dart';
 import 'package:stream_up_live/widgets/loader.dart';
+
 import '../resources/index_manager.dart';
-import 'package:video_player/video_player.dart';
 
 class LoginWithSocialMediaView extends StatefulWidget {
   const LoginWithSocialMediaView({Key? key}) : super(key: key);
@@ -33,7 +34,8 @@ class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset(ImageAssets.loginSocialMediaDarkVideo);
+    // _controller =
+    //     VideoPlayerController.asset(ImageAssets.loginSocialMediaDarkVideo);
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
     _controller.play();
@@ -44,145 +46,147 @@ class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
     return GetBuilder<AuthController>(
         init: AuthController(),
         builder: (_) {
-         return Scaffold(
-           backgroundColor: Colors.transparent,
-           body: Center(
-             child: Stack(
-               children: <Widget>[
-                 _getVideoBackground(),
-                 Column(
-                   crossAxisAlignment: CrossAxisAlignment.center,
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     SizedBox(height: AppSize.s90.vs),
+          return Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Center(
+              child: Stack(
+                children: <Widget>[
+                  _getVideoBackground(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(height: AppSize.s90.vs),
 
-                     // Image.asset(
-                     //   height: 250,
-                     //   ImageAssets.applogo,
-                     // ),
-                     // SizedBox(height: AppSize.s12),
-                     Container(
-                       child: Column(
-                         children: [
-                           Text(
-                             'YAMMY',
-                             style: getsemiboldStyle(
-                                 color: ColorManager.white,
-                                 fontSize: AppSize.s30.mv),
-                           ),
-                           Text(
-                             'Video & Voice Chat',
-                             style: getsemiboldStyle(
-                                 color: ColorManager.white,
-                                 fontSize: AppSize.s30.mv),
-                           ),
-                           SizedBox(height: AppSize.s60),
-                           // socialButton(
-                           //     text: AppStrings.facebook,
-                           //     color: ColorManager.white,
-                           //     bgcolor: ColorManager.blue,
-                           //     prfixicon: ImageAssets.facebookIcon,
-                           //     onTap: () {
-                           //       // Get.changeTheme(
-                           //       //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
-                           //       // );
-                           //       if (rememberMe) {
-                           //         Navigator.pushNamed(
-                           //             context, Routes.recomendedTalentViewRoute);
-                           //       } else {
-                           //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                           //             content: Text("Please Accept Terms and conditions")));
-                           //       }
-                           //     }),
-                           // socialButton(
-                           //     text: AppStrings.google,
-                           //     bgcolor: ColorManager.primary,
-                           //     color: ColorManager.white,
-                           //     prfixicon: ImageAssets.googleIcon,
-                           //     onTap: () {
-                           //       //  Get.changeTheme(ThemeData.light());
-                           //       if (rememberMe) {
-                           //         Navigator.pushNamed(
-                           //             context, Routes.recomendedTalentViewRoute);
-                           //       } else {
-                           //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                           //             content: Text("Please Accept Terms and conditions")));
-                           //       }
-                           //     }),
-                           socialButton(
-                               text: AppStrings.facebook,
-                               color: ColorManager.white,
-                               bgcolor: ColorManager.blue,
-                               prfixicon: ImageAssets.facebookIcon,
-                               onTap: () {
-                                 // Get.changeTheme(
-                                 //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
-                                 // );
-                                 if (rememberMe) {
-                                   ScaffoldMessenger.of(context).showSnackBar(
-                                       SnackBar(
-                                           content: Text("Under Development")));
-                                 } else {
-                                   ScaffoldMessenger.of(context).showSnackBar(
-                                       SnackBar(
-                                           content: Text(
-                                               "Please Accept Terms and conditions")));
-                                 }
-                               }),
+                      // Image.asset(
+                      //   height: 250,
+                      //   ImageAssets.applogo,
+                      // ),
+                      // SizedBox(height: AppSize.s12),
+                      Container(
+                        child: Column(
+                          children: [
+                            Text(
+                              'YAMMY',
+                              style: getsemiboldStyle(
+                                  color: ColorManager.white,
+                                  fontSize: AppSize.s30.mv),
+                            ),
+                            Text(
+                              'Video & Voice Chat',
+                              style: getsemiboldStyle(
+                                  color: ColorManager.white,
+                                  fontSize: AppSize.s30.mv),
+                            ),
+                            SizedBox(height: AppSize.s60),
+                            // socialButton(
+                            //     text: AppStrings.facebook,
+                            //     color: ColorManager.white,
+                            //     bgcolor: ColorManager.blue,
+                            //     prfixicon: ImageAssets.facebookIcon,
+                            //     onTap: () {
+                            //       // Get.changeTheme(
+                            //       //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
+                            //       // );
+                            //       if (rememberMe) {
+                            //         Navigator.pushNamed(
+                            //             context, Routes.recomendedTalentViewRoute);
+                            //       } else {
+                            //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            //             content: Text("Please Accept Terms and conditions")));
+                            //       }
+                            //     }),
+                            // socialButton(
+                            //     text: AppStrings.google,
+                            //     bgcolor: ColorManager.primary,
+                            //     color: ColorManager.white,
+                            //     prfixicon: ImageAssets.googleIcon,
+                            //     onTap: () {
+                            //       //  Get.changeTheme(ThemeData.light());
+                            //       if (rememberMe) {
+                            //         Navigator.pushNamed(
+                            //             context, Routes.recomendedTalentViewRoute);
+                            //       } else {
+                            //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            //             content: Text("Please Accept Terms and conditions")));
+                            //       }
+                            //     }),
+                            socialButton(
+                                text: AppStrings.facebook,
+                                color: ColorManager.white,
+                                bgcolor: ColorManager.blue,
+                                prfixicon: ImageAssets.facebookIcon,
+                                onTap: () {
+                                  // Get.changeTheme(
+                                  //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
+                                  // );
+                                  if (rememberMe) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content:
+                                                Text("Under Development")));
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text(
+                                                "Please Accept Terms and conditions")));
+                                  }
+                                }),
 
-                           facebookGoogleBtn(
-                             isLoader: _.isLoading,
-                             onFacebookTab: () {
-                               if (rememberMe) {
-                                 Navigator.pushNamed(context, Routes.loginRoute);
-                               } else {
-                                 showCustomSnackBar(
-                                     'Please Accept Terms and conditions'.tr);
-                               }
-                             },
-                             onGoogleTab: () async {
-                               if (rememberMe) {
-                                 UserCredential? userCredential =
-                                 await signUpWithGoogle();
-                                 if (userCredential != null) {
-                                   final String? _name =
-                                       userCredential.user!.displayName;
-                                   final String? _email =
-                                       userCredential.user!.email;
-                                   final String? _password =
-                                       userCredential.user!.uid;
-                                   final String? _number =
-                                       userCredential.user!.phoneNumber;
-                                   _checkEmail(_, _email, _password, _name,
-                                       _number.toString());
-                                   // _signup(_,_email,_password,_name,_number.toString());
-                                 }
-                               } else {
-                                 showCustomSnackBar(
-                                     'Please Accept Terms and conditions'.tr);
-                               }
-                             },
-                           ),
-                           SizedBox(
-                             height: 20.0,
-                           ),
-                         ],
-                       ),
-                     ),
-                     TermAndCondition(),
+                            facebookGoogleBtn(
+                              isLoader: _.isLoading,
+                              onFacebookTab: () {
+                                if (rememberMe) {
+                                  Navigator.pushNamed(
+                                      context, Routes.loginRoute);
+                                } else {
+                                  showCustomSnackBar(
+                                      'Please Accept Terms and conditions'.tr);
+                                }
+                              },
+                              onGoogleTab: () async {
+                                if (rememberMe) {
+                                  UserCredential? userCredential =
+                                      await signUpWithGoogle();
+                                  if (userCredential != null) {
+                                    final String? _name =
+                                        userCredential.user!.displayName;
+                                    final String? _email =
+                                        userCredential.user!.email;
+                                    final String? _password =
+                                        userCredential.user!.uid;
+                                    final String? _number =
+                                        userCredential.user!.phoneNumber;
+                                    _checkEmail(_, _email, _password, _name,
+                                        _number.toString());
+                                    // _signup(_,_email,_password,_name,_number.toString());
+                                  }
+                                } else {
+                                  showCustomSnackBar(
+                                      'Please Accept Terms and conditions'.tr);
+                                }
+                              },
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                          ],
+                        ),
+                      ),
+                      TermAndCondition(),
 
-                     // Center(
-                     //   child: CircularIconButton(
-                     //       icon: Icons.more_horiz,
-                     //       ),
-                     // ),
-                     // TermAndCondition(),
-                   ],
-                 ),
-               ],
-             ),
-           ),
-         );
+                      // Center(
+                      //   child: CircularIconButton(
+                      //       icon: Icons.more_horiz,
+                      //       ),
+                      // ),
+                      // TermAndCondition(),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
         });
   }
 
@@ -446,10 +450,9 @@ class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
                         Padding(
                           padding: const EdgeInsets.only(left: 18.0),
                           child: SvgPicture.asset(
-                              ImageAssets.googleIcon,
+                            ImageAssets.googleIcon,
                             height: 35,
                             width: AppSize.s24,
-
                           ),
                         ),
                         Text("Google",

@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:stream_up_live/data/Live_Streaming/live_streaming.dart';
 import 'package:stream_up_live/presentation/Mixins/size.dart';
 
 import '../presentation/resources/index_manager.dart';
@@ -141,7 +142,7 @@ class _CustomDialogState extends State<CustomDialog>
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => LiveStreamingLoginPage(),
+                      builder: (context) => LiveStreamingBasePage(),
                     ));
                 // Navigator.pushNamed(context, Routes.LiveStreamingBasePage);
               }),
