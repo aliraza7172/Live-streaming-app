@@ -15,6 +15,7 @@ import 'package:stream_up_live/presentation/RecomendedTalents/recomended_talents
 import 'package:stream_up_live/widgets/custom_snackbar.dart';
 import 'package:stream_up_live/widgets/loader.dart';
 import '../resources/index_manager.dart';
+import 'package:video_player/video_player.dart';
 
 class LoginWithSocialMediaView extends StatefulWidget {
   const LoginWithSocialMediaView({Key? key}) : super(key: key);
@@ -26,154 +27,177 @@ class LoginWithSocialMediaView extends StatefulWidget {
 class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
   bool rememberMe = false;
   bool showButtons = false;
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset(ImageAssets.loginSocialMediaDarkVideo);
+    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller.setLooping(true);
+    _controller.play();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<AuthController>(
         init: AuthController(),
         builder: (_) {
-          return Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(ImageAssets.loginSocialMediaDarkImage),
-                  fit: BoxFit.cover),
-            ),
-            child: Scaffold(
-              backgroundColor: Colors.transparent,
-              body: SizedBox(
-                width: AppSize.sizeWidth(context),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(height: AppSize.s90.vs),
+         return Scaffold(
+           backgroundColor: Colors.transparent,
+           body: Center(
+             child: Stack(
+               children: <Widget>[
+                 _getVideoBackground(),
+                 Column(
+                   crossAxisAlignment: CrossAxisAlignment.center,
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   children: [
+                     SizedBox(height: AppSize.s90.vs),
 
-                    // Image.asset(
-                    //   height: 250,
-                    //   ImageAssets.applogo,
-                    // ),
-                    // SizedBox(height: AppSize.s12),
-                    Container(
-                      child: Column(
-                        children: [
-                          Text(
-                            'Dm Megh Live',
-                            style: getsemiboldStyle(
-                                color: ColorManager.white,
-                                fontSize: AppSize.s30.mv),
-                          ),
-                          Text(
-                            'Video & Voice Chat',
-                            style: getsemiboldStyle(
-                                color: ColorManager.white,
-                                fontSize: AppSize.s30.mv),
-                          ),
-                          SizedBox(height: AppSize.s60),
-                          // socialButton(
-                          //     text: AppStrings.facebook,
-                          //     color: ColorManager.white,
-                          //     bgcolor: ColorManager.blue,
-                          //     prfixicon: ImageAssets.facebookIcon,
-                          //     onTap: () {
-                          //       // Get.changeTheme(
-                          //       //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
-                          //       // );
-                          //       if (rememberMe) {
-                          //         Navigator.pushNamed(
-                          //             context, Routes.recomendedTalentViewRoute);
-                          //       } else {
-                          //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          //             content: Text("Please Accept Terms and conditions")));
-                          //       }
-                          //     }),
-                          // socialButton(
-                          //     text: AppStrings.google,
-                          //     bgcolor: ColorManager.primary,
-                          //     color: ColorManager.white,
-                          //     prfixicon: ImageAssets.googleIcon,
-                          //     onTap: () {
-                          //       //  Get.changeTheme(ThemeData.light());
-                          //       if (rememberMe) {
-                          //         Navigator.pushNamed(
-                          //             context, Routes.recomendedTalentViewRoute);
-                          //       } else {
-                          //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          //             content: Text("Please Accept Terms and conditions")));
-                          //       }
-                          //     }),
-                          socialButton(
-                              text: AppStrings.facebook,
-                              color: ColorManager.white,
-                              bgcolor: ColorManager.blue,
-                              prfixicon: ImageAssets.facebookIcon,
-                              onTap: () {
-                                // Get.changeTheme(
-                                //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
-                                // );
-                                if (rememberMe) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                          content: Text("Under Development")));
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                          content: Text(
-                                              "Please Accept Terms and conditions")));
-                                }
-                              }),
+                     // Image.asset(
+                     //   height: 250,
+                     //   ImageAssets.applogo,
+                     // ),
+                     // SizedBox(height: AppSize.s12),
+                     Container(
+                       child: Column(
+                         children: [
+                           Text(
+                             'YAMMY',
+                             style: getsemiboldStyle(
+                                 color: ColorManager.white,
+                                 fontSize: AppSize.s30.mv),
+                           ),
+                           Text(
+                             'Video & Voice Chat',
+                             style: getsemiboldStyle(
+                                 color: ColorManager.white,
+                                 fontSize: AppSize.s30.mv),
+                           ),
+                           SizedBox(height: AppSize.s60),
+                           // socialButton(
+                           //     text: AppStrings.facebook,
+                           //     color: ColorManager.white,
+                           //     bgcolor: ColorManager.blue,
+                           //     prfixicon: ImageAssets.facebookIcon,
+                           //     onTap: () {
+                           //       // Get.changeTheme(
+                           //       //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
+                           //       // );
+                           //       if (rememberMe) {
+                           //         Navigator.pushNamed(
+                           //             context, Routes.recomendedTalentViewRoute);
+                           //       } else {
+                           //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                           //             content: Text("Please Accept Terms and conditions")));
+                           //       }
+                           //     }),
+                           // socialButton(
+                           //     text: AppStrings.google,
+                           //     bgcolor: ColorManager.primary,
+                           //     color: ColorManager.white,
+                           //     prfixicon: ImageAssets.googleIcon,
+                           //     onTap: () {
+                           //       //  Get.changeTheme(ThemeData.light());
+                           //       if (rememberMe) {
+                           //         Navigator.pushNamed(
+                           //             context, Routes.recomendedTalentViewRoute);
+                           //       } else {
+                           //         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                           //             content: Text("Please Accept Terms and conditions")));
+                           //       }
+                           //     }),
+                           socialButton(
+                               text: AppStrings.facebook,
+                               color: ColorManager.white,
+                               bgcolor: ColorManager.blue,
+                               prfixicon: ImageAssets.facebookIcon,
+                               onTap: () {
+                                 // Get.changeTheme(
+                                 //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
+                                 // );
+                                 if (rememberMe) {
+                                   ScaffoldMessenger.of(context).showSnackBar(
+                                       SnackBar(
+                                           content: Text("Under Development")));
+                                 } else {
+                                   ScaffoldMessenger.of(context).showSnackBar(
+                                       SnackBar(
+                                           content: Text(
+                                               "Please Accept Terms and conditions")));
+                                 }
+                               }),
 
-                          facebookGoogleBtn(
-                            isLoader: _.isLoading,
-                            onFacebookTab: () {
-                              if (rememberMe) {
-                                Navigator.pushNamed(context, Routes.loginRoute);
-                              } else {
-                                showCustomSnackBar(
-                                    'Please Accept Terms and conditions'.tr);
-                              }
-                            },
-                            onGoogleTab: () async {
-                              if (rememberMe) {
-                                UserCredential? userCredential =
-                                    await signUpWithGoogle();
-                                if (userCredential != null) {
-                                  final String? _name =
-                                      userCredential.user!.displayName;
-                                  final String? _email =
-                                      userCredential.user!.email;
-                                  final String? _password =
-                                      userCredential.user!.uid;
-                                  final String? _number =
-                                      userCredential.user!.phoneNumber;
-                                  _checkEmail(_, _email, _password, _name,
-                                      _number.toString());
-                                  // _signup(_,_email,_password,_name,_number.toString());
-                                }
-                              } else {
-                                showCustomSnackBar(
-                                    'Please Accept Terms and conditions'.tr);
-                              }
-                            },
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                        ],
-                      ),
-                    ),
-                    TermAndCondition(),
+                           facebookGoogleBtn(
+                             isLoader: _.isLoading,
+                             onFacebookTab: () {
+                               if (rememberMe) {
+                                 Navigator.pushNamed(context, Routes.loginRoute);
+                               } else {
+                                 showCustomSnackBar(
+                                     'Please Accept Terms and conditions'.tr);
+                               }
+                             },
+                             onGoogleTab: () async {
+                               if (rememberMe) {
+                                 UserCredential? userCredential =
+                                 await signUpWithGoogle();
+                                 if (userCredential != null) {
+                                   final String? _name =
+                                       userCredential.user!.displayName;
+                                   final String? _email =
+                                       userCredential.user!.email;
+                                   final String? _password =
+                                       userCredential.user!.uid;
+                                   final String? _number =
+                                       userCredential.user!.phoneNumber;
+                                   _checkEmail(_, _email, _password, _name,
+                                       _number.toString());
+                                   // _signup(_,_email,_password,_name,_number.toString());
+                                 }
+                               } else {
+                                 showCustomSnackBar(
+                                     'Please Accept Terms and conditions'.tr);
+                               }
+                             },
+                           ),
+                           SizedBox(
+                             height: 20.0,
+                           ),
+                         ],
+                       ),
+                     ),
+                     TermAndCondition(),
 
-                    // Center(
-                    //   child: CircularIconButton(
-                    //       icon: Icons.more_horiz,
-                    //       ),
-                    // ),
-                    // TermAndCondition(),
-                  ],
-                ),
-              ),
-            ),
-          );
+                     // Center(
+                     //   child: CircularIconButton(
+                     //       icon: Icons.more_horiz,
+                     //       ),
+                     // ),
+                     // TermAndCondition(),
+                   ],
+                 ),
+               ],
+             ),
+           ),
+         );
         });
+  }
+
+  _getVideoBackground() {
+    return AnimatedOpacity(
+      duration: Duration(milliseconds: 1000),
+      opacity: 1,
+      child: VideoPlayer(_controller),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   Widget TermAndCondition() {
@@ -364,7 +388,7 @@ class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 18.0),
                   child: SvgPicture.asset(
                     prfixicon!,
                     height: 35,
@@ -405,7 +429,7 @@ class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(AppPadding.p40),
-                color: Colors.red,
+                color: Colors.white,
               ),
               child: isLoader
                   ? Center(
@@ -420,17 +444,18 @@ class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 5.0),
-                          child: Text(
-                            'G',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 40),
+                          padding: const EdgeInsets.only(left: 18.0),
+                          child: SvgPicture.asset(
+                              ImageAssets.googleIcon,
+                            height: 35,
+                            width: AppSize.s24,
+
                           ),
                         ),
                         Text("Google",
                             style: TextStyle(
                                 fontSize: 20,
-                                color: Colors.white,
+                                color: Colors.black87,
                                 fontWeight: FontWeight.w500)),
                         SizedBox(),
                       ],
@@ -456,7 +481,7 @@ class _LoginWithSocialMediaViewState extends State<LoginWithSocialMediaView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(AppPadding.p12),
+                    padding: EdgeInsets.all(AppPadding.p18),
                     child: Icon(
                       Icons.mail,
                       color: Colors.white,

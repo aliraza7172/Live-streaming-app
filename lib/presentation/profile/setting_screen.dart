@@ -105,7 +105,7 @@ class _SettingViewPageState extends State<SettingViewPage> {
             }),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text("Powered by stream_up_live.",
+          child: Text("Powered by Hummingbird developers.",
               style: getsemiboldStyle(
                   color: ColorManager.whiteColor, fontSize: 14.mv)),
         ),

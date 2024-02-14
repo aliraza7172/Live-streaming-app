@@ -68,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
               SizedBox(height: AppSize.s12),
               Text(
-                'Dm Mega Live',
+                'YAMMY',
                 style: getsemiboldStyle(
                     color: ColorManager.white, fontSize: AppSize.s30.mv),
               ),

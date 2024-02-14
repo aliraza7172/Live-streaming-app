@@ -71,7 +71,12 @@ dependencies:
   # ! Zigo Cloud Sections 
   zego_uikit_prebuilt_live_streaming: ^3.1.11
   zego_zimkit: ^1.16.1
+<<<<<<< HEAD
   auto_size_text: ^3.0.0
+=======
+  # ! Zego Cloud help for a Live Streaming such as (Bigo Live, yalla Ludo)
+  video_player: ^2.8.2
+>>>>>>> aa04bdf989c7e761b08d0f89126d535cb1032507
 
 dev_dependencies:
   flutter_test:
