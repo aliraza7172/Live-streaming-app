@@ -210,7 +210,8 @@ class ImageAssets {
   //------------------Audio-Live-User-Image--------------------------
   static const String audioliveUserImage = "$IMAGE_PATH/audioliveUser.png";
   static const String user_defaultImage = "$IMAGE_PATH/user_default.jpeg";
-  static const String background_defaultImage = "$IMAGE_PATH/background_default.jpeg";
+  static const String background_defaultImage =
+      "$IMAGE_PATH/background_default.jpeg";
   static const String audioUseractiveIcon = "$ICON_PATH/audioUseractive.svg";
   static const String fireIcon = "$ICON_PATH/fire.svg";
   static const String phonemicIcon = "$ICON_PATH/phonemic.svg";
@@ -290,4 +291,15 @@ class ImageAssets {
   //--------------------------------Login_with_social_media_bg_Image-----------------
   static const String loginSocialMediaDarkImage =
       "$IMAGE_PATH/LoginWithSocialMediadark.png";
+
+  //--------------------------------VideoLive Streaming------------------------------
+  static const String topMenuImages = "$IMAGE_PATH/project_image.png";
+  static const String topMemberStream = "$IMAGE_PATH/memberStream.png";
+  static const String bottomStreamGift = "$IMAGE_PATH/streamGift.png";
+  static const String bottomStreamMessage = "$IMAGE_PATH/streamMessage.png";
+  static const String streamDollar = "$IMAGE_PATH/streamDollar.png";
+  static const String timeIconStream = "$IMAGE_PATH/timeIconStream.png";
+  static const String userSettingStreamLive =
+      "$IMAGE_PATH/userSettingStream.png";
+  static const String musicStream = "$IMAGE_PATH/musicStream.png";
 }

@@ -68,9 +68,10 @@ dependencies:
   carousel_slider: ^4.2.1
   agora_rtc_engine:
   camera: ^0.10.5+9
+  # ! Zigo Cloud Sections 
   zego_uikit_prebuilt_live_streaming: ^3.1.11
   zego_zimkit: ^1.16.1
-  # ! Zego Cloud help for a Live Streaming such as (Bigo Live, yalla Ludo)
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:

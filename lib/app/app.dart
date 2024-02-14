@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
     return ResponsiveSizer(builder: (context, orientation, screenType) {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Nico live',
+        title: 'Nice live',
         // themeMode: ThemeMode.system,
         // darkTheme: getApplicationTheme(),
         // theme: getApplicationTheme(),
@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
         //   primarySwatch: myappColor,
         // ),
         //home: Container(),
-        initialRoute: Routes.splashRoute,
+        initialRoute: Routes.LiveStreamingBasePage,
         onGenerateRoute: RouteGenerator.getRoute,
       );
     });

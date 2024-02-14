@@ -1,12 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
 import 'package:stream_up_live/controller/messanger_controller.dart';
 import 'package:stream_up_live/data/model/body/messages_model.dart';
 import 'package:stream_up_live/presentation/Mixins/size.dart';
 import 'package:stream_up_live/presentation/chat/message_screen.dart';
-import 'package:stream_up_live/presentation/resources/list.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import '../../widgets/index_widget.dart';
 import '../resources/index_manager.dart';
 
@@ -21,35 +22,37 @@ class _MessagesViewState extends State<MessagesView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MessangerController>(
-      init: MessangerController(),
-        builder: (_){
-      return Column(
-        children: [
-          AppBarSearchField(),
-          /*--------------------EditPic--------------------------------------- */
-          header(),
-          Divider(color: ColorManager.grey),
-          Flexible(
-            child: ListView.separated(
-                padding: EdgeInsets.zero,
-                separatorBuilder: ((context, index) => Divider(
-                  color: ColorManager.grey,
-                )),
-                itemCount: _.messagesModel.data!.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                      onTap: () {
-                        //InnerChat
-                        _.singleChat=_.messagesModel.data![index];
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => InnerChat()));
-                      },
-                      child: chatUser(_.messagesModel.data![index]));
-                }),
-          )
-        ],
-      );
-    });
+        init: MessangerController(),
+        builder: (_) {
+          return Column(
+            children: [
+              AppBarSearchField(),
+              /*--------------------EditPic--------------------------------------- */
+              header(),
+              Divider(color: ColorManager.grey),
+              Flexible(
+                child: ListView.separated(
+                    padding: EdgeInsets.zero,
+                    separatorBuilder: ((context, index) => Divider(
+                          color: ColorManager.grey,
+                        )),
+                    itemCount: _.messagesModel.data!.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                          onTap: () {
+                            //InnerChat
+                            _.singleChat = _.messagesModel.data![index];
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => InnerChat()));
+                          },
+                          child: chatUser(_.messagesModel.data![index]));
+                    }),
+              )
+            ],
+          );
+        });
   }
 
   Widget header() {
@@ -86,13 +89,10 @@ class _MessagesViewState extends State<MessagesView> {
               radius: 30.0,
               child: CachedNetworkImage(
                 fit: BoxFit.cover,
-                imageUrl: AppStrings.imgBaseUrl+"/"+chatData.userImage,
-                placeholder: (context, url) =>
-                const Center(
+                imageUrl: AppStrings.imgBaseUrl + "/" + chatData.userImage,
+                placeholder: (context, url) => const Center(
                     child: CircleAvatar(
-                        radius: 20,
-                        child:
-                        CircularProgressIndicator())),
+                        radius: 20, child: CircularProgressIndicator())),
                 errorWidget: (context, url, error) => Container(
                   height: 40,
                   width: 40,
@@ -101,7 +101,7 @@ class _MessagesViewState extends State<MessagesView> {
                     //borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
                       colorFilter:
-                      ColorFilter.mode(Colors.black12, BlendMode.darken),
+                          ColorFilter.mode(Colors.black12, BlendMode.darken),
                       fit: BoxFit.cover,
                       image: AssetImage(ImageAssets.background_defaultImage),
                     ),
@@ -110,8 +110,8 @@ class _MessagesViewState extends State<MessagesView> {
                 imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      image:
-                      DecorationImage(fit: BoxFit.cover, image: imageProvider)),
+                      image: DecorationImage(
+                          fit: BoxFit.cover, image: imageProvider)),
                 ),
               ),
             ),
