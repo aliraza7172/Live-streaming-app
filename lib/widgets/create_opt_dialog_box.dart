@@ -7,8 +7,6 @@ import '../presentation/resources/index_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../data/Live_Streaming/live_streaming_login_page.dart';
-
 class CustomDialog extends StatefulWidget {
   CustomDialog({
     Key? key,
@@ -167,7 +165,9 @@ class _CustomDialogState extends State<CustomDialog>
                 // Get.changeTheme(
                 //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
                 // );
-                Navigator.pushNamed(context, Routes.AudioLiveViewRoute,
+                Navigator.pushNamed(
+                  context,
+                  Routes.AudioLiveViewRoute,
                 );
               }),
           SizedBox(height: 10.0),

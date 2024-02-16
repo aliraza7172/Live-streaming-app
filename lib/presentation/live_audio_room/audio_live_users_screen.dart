@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-
 import 'package:stream_up_live/presentation/live_audio_room/circle_image_outer.dart';
 import 'package:stream_up_live/presentation/live_audio_room/circle_image_text.dart';
 import 'package:stream_up_live/presentation/live_audio_room/zego_media.dart';
@@ -19,13 +18,10 @@ import '../../widgets/custom_icon_button.dart';
 import 'circle_image.dart';
 import 'custom_image_view.dart';
 
-
 class AudioLiveUsersView extends StatefulWidget {
-
   final String roomID;
   final bool isHost;
   final LayoutMode layoutMode;
-
 
   const AudioLiveUsersView({
     Key? key,
@@ -34,14 +30,23 @@ class AudioLiveUsersView extends StatefulWidget {
     this.isHost = false,
   }) : super(key: key);
 
-
   @override
   State<AudioLiveUsersView> createState() => _AudioLiveUsersViewState();
 }
 
 class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
     with SingleTickerProviderStateMixin {
-  List<IconData> customIcons = [Icons.cookie, Icons.phone, Icons.speaker, Icons.air, Icons.blender, Icons.file_copy, Icons.place, Icons.phone_android, Icons.phone_iphone];
+  List<IconData> customIcons = [
+    Icons.cookie,
+    Icons.phone,
+    Icons.speaker,
+    Icons.air,
+    Icons.blender,
+    Icons.file_copy,
+    Icons.place,
+    Icons.phone_android,
+    Icons.phone_iphone
+  ];
 
   void initState() {
     super.initState();
@@ -49,22 +54,19 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
 
   @override
   Widget build(BuildContext context) {
-
-    return Sizer(
-        builder: (context, orientation, deviceType) {
-          return SafeArea(
-            child: ZegoUIKitPrebuiltLiveAudioRoom(
-              appID: zegoAppId /*input your AppID*/,
-              appSign:zegoAppSign  /*input your AppSign*/,
-              userID: localUserID,
-              userName: 'user_$localUserID',
-              roomID: widget.roomID,
-              events: events,
-              config: config,
-            ),
-          );
-        }
-    );
+    return Sizer(builder: (context, orientation, deviceType) {
+      return SafeArea(
+        child: ZegoUIKitPrebuiltLiveAudioRoom(
+          appID: zegoAppId /*input your AppID*/,
+          appSign: zegoAppSign /*input your AppSign*/,
+          userID: localUserID,
+          userName: 'user_$localUserID',
+          roomID: widget.roomID,
+          events: events,
+          config: config,
+        ),
+      );
+    });
   }
 
   ZegoUIKitPrebuiltLiveAudioRoomConfig get config {
@@ -73,25 +75,23 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
         : ZegoUIKitPrebuiltLiveAudioRoomConfig.audience()
       ..seat = (getSeatConfig()
         ..takeIndexWhenJoining = widget.isHost ? getHostSeatIndex() : -1
-        ..hostIndexes = getLockSeatIndex()
-      )
+        ..hostIndexes = getLockSeatIndex())
       ..background = _background()
       ..foreground = _foreground()
       ..topMenuBar.buttons = [
         ZegoLiveAudioRoomMenuBarButtonName.closeSeatButton
       ]
-      ..seat.avatarBuilder = (BuildContext context, Size size, ZegoUIKitUser? user, Map<String, dynamic>? extraInfo) {
+      ..seat.avatarBuilder = (BuildContext context, Size size,
+          ZegoUIKitUser? user, Map<String, dynamic>? extraInfo) {
         return CircularImageOuter(
           outerImagePath: ImageConstant.imgMaxRemovebgPreview66x50,
           innerImagePath: ImageConstant.imgImagesRemovebgPreview,
           outerSize: 100,
           innerSize: 40,
-        )
-        ;
+        );
       });
-    }
-      //..userAvatarUrl = 'https://robohash.org/$localUserID.png';
-
+  }
+  //..userAvatarUrl = 'https://robohash.org/$localUserID.png';
 
   ZegoUIKitPrebuiltLiveAudioRoomEvents get events {
     return ZegoUIKitPrebuiltLiveAudioRoomEvents(
@@ -110,9 +110,9 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
           debugPrint('on seat opened');
         },
         onChanged: (
-            Map<int, ZegoUIKitUser> takenSeats,
-            List<int> untakenSeats,
-            ) {
+          Map<int, ZegoUIKitUser> takenSeats,
+          List<int> untakenSeats,
+        ) {
           debugPrint(
             'on seats changed, taken seats:$takenSeats, untaken seats:$untakenSeats',
           );
@@ -174,7 +174,6 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
     );
   }
 
-
   Widget _background() {
     /// how to replace background view
     return Stack(
@@ -182,7 +181,7 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
         Container(
           color: ColorManager.secondarydarkColor,
         ),
-         Positioned(
+        Positioned(
             top: 15,
             left: 10,
             child: CircularImageOuter(
@@ -190,13 +189,12 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
               innerImagePath: ImageConstant.imgImagesRemovebgPreview,
               innerSize: 50,
               outerSize: 70,
-            )
-         ),
+            )),
         Positioned(
           top: 10 + 20,
           left: 70,
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 2,horizontal: 5),
+            padding: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
             decoration: BoxDecoration(
               color: appTheme.black900.withOpacity(0.15),
               borderRadius: BorderRadius.circular(
@@ -204,20 +202,14 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
               ),
             ),
             child: Padding(
-              padding: EdgeInsets.only(
-                top: 8.v,
-                right: 7.h,
-                left: 10.h,
-                bottom: 5
-
-              ),
+              padding:
+                  EdgeInsets.only(top: 8.v, right: 7.h, left: 10.h, bottom: 5),
               child: Text(
                 'Pranto Khan\n${widget.roomID}',
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 12,
-
                 ),
               ),
             ),
@@ -232,8 +224,7 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
               outerSize: 50,
               innerSize: 35,
               text: '100K',
-            )
-        ),
+            )),
         Positioned(
             top: 10 + 20,
             left: 235,
@@ -243,8 +234,7 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
               outerSize: 45,
               innerSize: 30,
               text: '70K',
-            )
-        ),
+            )),
         Positioned(
             top: 10 + 25,
             left: 288,
@@ -253,26 +243,22 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
               outerSize: 40,
               innerSize: 40,
               text: '50K',
-            )
-        )
+            ))
       ],
     );
   }
 
   ZegoLiveAudioRoomSeatConfig getSeatConfig() {
-
     return ZegoLiveAudioRoomSeatConfig(
-      layout:ZegoLiveAudioRoomLayoutConfig(
-        rowConfigs: [
-          ZegoLiveAudioRoomLayoutRowConfig(count: 1, alignment: ZegoLiveAudioRoomLayoutAlignment.center),
-          ZegoLiveAudioRoomLayoutRowConfig(count: 4, alignment: ZegoLiveAudioRoomLayoutAlignment.spaceAround),
-          ZegoLiveAudioRoomLayoutRowConfig(count: 4, alignment: ZegoLiveAudioRoomLayoutAlignment.spaceAround),
-        ]
-      )
-    );
+        layout: ZegoLiveAudioRoomLayoutConfig(rowConfigs: [
+      ZegoLiveAudioRoomLayoutRowConfig(
+          count: 1, alignment: ZegoLiveAudioRoomLayoutAlignment.center),
+      ZegoLiveAudioRoomLayoutRowConfig(
+          count: 4, alignment: ZegoLiveAudioRoomLayoutAlignment.spaceAround),
+      ZegoLiveAudioRoomLayoutRowConfig(
+          count: 4, alignment: ZegoLiveAudioRoomLayoutAlignment.spaceAround),
+    ]));
   }
-
-
 
   int getHostSeatIndex() {
     if (widget.layoutMode == LayoutMode.hostCenter) {
@@ -299,7 +285,7 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
         config.rowSpacing = 5;
         config.rowConfigs = List.generate(
           4,
-              (index) => ZegoLiveAudioRoomLayoutRowConfig(
+          (index) => ZegoLiveAudioRoomLayoutRowConfig(
             count: 4,
             alignment: ZegoLiveAudioRoomLayoutAlignment.spaceBetween,
           ),
@@ -318,7 +304,7 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
         config.rowSpacing = 5;
         config.rowConfigs = List.generate(
           8,
-              (index) => ZegoLiveAudioRoomLayoutRowConfig(
+          (index) => ZegoLiveAudioRoomLayoutRowConfig(
             count: 1,
             alignment: ZegoLiveAudioRoomLayoutAlignment.spaceBetween,
           ),
@@ -392,51 +378,51 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
           fontWeight: FontWeight.w500,
         );
         final listMenu = ZegoUIKitPrebuiltLiveAudioRoomController()
-            .seat
-            .localHasHostPermissions
+                .seat
+                .localHasHostPermissions
             ? [
-          GestureDetector(
-            onTap: () async {
-              Navigator.of(context).pop();
+                GestureDetector(
+                  onTap: () async {
+                    Navigator.of(context).pop();
 
-              ZegoUIKit().removeUserFromRoom(
-                [user.id],
-              ).then((result) {
-                debugPrint('kick out result:$result');
-              });
-            },
-            child: Text(
-              'Kick Out ${user.name}',
-              style: textStyle,
-            ),
-          ),
-          GestureDetector(
-            onTap: () async {
-              Navigator.of(context).pop();
+                    ZegoUIKit().removeUserFromRoom(
+                      [user.id],
+                    ).then((result) {
+                      debugPrint('kick out result:$result');
+                    });
+                  },
+                  child: Text(
+                    'Kick Out ${user.name}',
+                    style: textStyle,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    Navigator.of(context).pop();
 
-              ZegoUIKitPrebuiltLiveAudioRoomController()
-                  .seat
-                  .host
-                  .inviteToTake(user.id)
-                  .then((result) {
-                debugPrint('invite audience to take seat result:$result');
-              });
-            },
-            child: Text(
-              'Invite ${user.name} to take seat',
-              style: textStyle,
-            ),
-          ),
-          GestureDetector(
-            onTap: () async {
-              Navigator.of(context).pop();
-            },
-            child: const Text(
-              'Cancel',
-              style: textStyle,
-            ),
-          ),
-        ]
+                    ZegoUIKitPrebuiltLiveAudioRoomController()
+                        .seat
+                        .host
+                        .inviteToTake(user.id)
+                        .then((result) {
+                      debugPrint('invite audience to take seat result:$result');
+                    });
+                  },
+                  child: Text(
+                    'Invite ${user.name} to take seat',
+                    style: textStyle,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    'Cancel',
+                    style: textStyle,
+                  ),
+                ),
+              ]
             : [];
         return AnimatedPadding(
           padding: MediaQuery.of(context).viewInsets,
@@ -461,5 +447,4 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
       },
     );
   }
-
 }
