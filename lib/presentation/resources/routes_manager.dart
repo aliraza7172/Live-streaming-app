@@ -18,6 +18,7 @@ import 'package:stream_up_live/presentation/profile/help_screen.dart';
 import 'package:stream_up_live/presentation/profile/my_badge_screen.dart';
 import 'package:stream_up_live/presentation/profile/my_bag_screen.dart';
 import 'package:stream_up_live/presentation/profile/my_invites_screen.dart';
+import 'package:stream_up_live/presentation/profile/my_level.dart';
 import 'package:stream_up_live/presentation/profile/my_tasks_screen.dart';
 import 'package:stream_up_live/presentation/profile/public_profile_screen.dart';
 import 'package:stream_up_live/presentation/profile/setting_screen.dart';
@@ -39,6 +40,8 @@ import '../Setting/inbox_screen.dart';
 import '../Setting/privacy_screen.dart';
 import '../Setting/room_effects_screen.dart';
 import '../Setting/security_screen.dart';
+import '../profile/leader_boardpage.dart';
+import '../profile/live_data.dart';
 import '../live_audio_room/audio_live_users_screen.dart';
 import '../live_audio_room/live_people_screen.dart';
 import '../live_audio_room/live_screen.dart';
@@ -69,6 +72,7 @@ class Routes {
   static const String CreateAStoryRoute = "/CreateAStory";
   static const String TopUpViewPageRoute = "/TopUpViewPage";
   static const String EarningViewPageRoute = "/EarningViewPage";
+  static const String MyLevelPageRoute = "/MylevelPage";
   static const String FollowerViewRoute = "/FollowerViewPage";
   static const String FollowingViewRoute = "/FollowingViewPage";
   static const String OpenStoryViewRoute = "/OpenStoryView";
@@ -93,6 +97,8 @@ class Routes {
   static const String createPostPage = "/createPostPage";
   static const String createStoryPage = "/createStoryPage";
   static const String WealthClassViewRoute = "/WealthClassView";
+  static const String LiveDataViewRoute = "/LiveDataScreen";
+  static const String LeaderboardViewRoute = "/LeaderboardPage";
   static const String PrivacyViewRoute = "/PrivacyScreen";
   static const String BlockedListScreenViewRoute = "/BlockedListScreen";
   static const String InboxScreenVieRoute = "/InboxScreen";
@@ -217,6 +223,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ConnectWithUsScreen());
       case Routes.FAQsScreenViewRoute:
         return MaterialPageRoute(builder: (_) => FAQsScreen());
+      case Routes.LiveDataViewRoute:
+        return MaterialPageRoute(builder: (_) => LiveDataScreen());
+      case Routes.LeaderboardViewRoute:
+        return MaterialPageRoute(builder: (_) => LeaderboardPage());
+      case Routes.MyLevelPageRoute:
+        return MaterialPageRoute(builder: (_) => MylevelPage());
       case Routes.LiveStreamingBasePage:
         return MaterialPageRoute(
           builder: (_) => LiveStreamingBasePage(),

@@ -84,6 +84,14 @@ class _ProfileViewState extends State<ProfileView> {
         title: 'Wealth',
         iconpath: ImageAssets.myBadgeIcon,
         color: ColorManager.settingsColor),
+    ChoiceModel(
+        title: 'Live Data',
+        iconpath: ImageAssets.myBadgeIcon,
+        color: ColorManager.settingsColor),
+    ChoiceModel(
+        title: 'Leaderboard',
+        iconpath: ImageAssets.myBadgeIcon,
+        color: ColorManager.settingsColor),
   ];
 
   List choicsRoute = [
@@ -93,13 +101,15 @@ class _ProfileViewState extends State<ProfileView> {
     Routes.VipViewRoute,
     Routes.storeViewPageRoute,
     Routes.MyBagViewRoute,
-    Routes.EarningViewPageRoute,
+    Routes.MyLevelPageRoute,
     Routes.MyBadgeViewRoute,
     Routes.HelpSupportViewRoute,
     Routes.EditProfileViewRoute,
     Routes.MyInvitesViewRoute,
     Routes.SettingViewRoute,
     Routes.WealthClassViewRoute,
+    Routes.LiveDataViewRoute,
+    Routes.LeaderboardViewRoute,
   ];
 
   List _categories = [

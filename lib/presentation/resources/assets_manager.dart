@@ -15,6 +15,7 @@ class ImageAssets {
   static const String editProfileIcon = "$ICON_PATH/editProfile.svg";
   static const String helpIcon = "$ICON_PATH/help.svg";
   static const String myBadgeIcon = "$ICON_PATH/myBadge.svg";
+  static const String leaderboardIcon = "$ICON_PATH/leaderboard.png";
   static const String mybagIcon = "$ICON_PATH/mybag.svg";
   static const String myInvitesIcon = "$ICON_PATH/myInvites.svg";
   static const String mylevelIcon = "$ICON_PATH/mylevel.svg";
