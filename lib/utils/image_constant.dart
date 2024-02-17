@@ -251,7 +251,7 @@ class ImageConstant {
 
   static String imgDiamond3 = '$imagePath/img_diamond_3.png';
 
-  static String imgDryClean12 = '$imagePath/img_dry_clean_1_2.png';
+  static String imgCirclePink = '$imagePath/circle_img_pink.png';
 
   static String imgBackpack11 = '$imagePath/img_backpack_1_1.png';
 
@@ -266,4 +266,7 @@ class ImageConstant {
 
   static String imgGroup8 = '$imagePath/img_group_8.png';
   static String imgClose = '$imagePath/img_group_33.png';
+  static String imgGroup25 = '$imagePath/img_group_25.png';
+  static String imgDiamond19 = '$imagePath/img_diamond_19.png';
+
 }

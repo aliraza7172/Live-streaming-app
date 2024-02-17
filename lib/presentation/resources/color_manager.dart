@@ -50,7 +50,7 @@ class ColorManager {
   static const Color blackColor = Colors.black;
   static Color red = HexColor.fromHex("#F74239");
   static Color error = HexColor.fromHex("#e61f34"); // red color
-
+  static Color giftScreenColor = HexColor.fromHex("#0f012b");
   //profileGridviewBuildercolor
   static Color topupColor = HexColor.fromHex("#ED2C6F");
   static Color earningColor = HexColor.fromHex("#F2971A");
