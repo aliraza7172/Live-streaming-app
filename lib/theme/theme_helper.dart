@@ -138,6 +138,18 @@ class PrimaryColors {
 
   // White
   Color get whiteA700 => Color(0XFFFFFFFF);
+
+  // Black
+  Color get black90033 => Color(0X33000000);
+
+  // Indigo
+  Color get indigoA700 => Color(0XFF0027F4);
+  // Purple
+  Color get purpleA100 => Color(0XFFFF6FD8);
+  // LightGreen
+  Color get lightGreenA200 => Color(0XFFA0FE65);
+  // Pink
+  Color get pinkA400 => Color(0XFFFA016D);
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();

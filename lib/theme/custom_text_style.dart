@@ -30,8 +30,30 @@ class CustomTextStyles {
         fontSize: 11.fSize,
       );
   static get bodySmall12 => theme.textTheme.bodySmall!.copyWith(
-        fontSize: 12.fSize,
+    color: appTheme.tealA700,
+    fontSize: 12.fSize,
       );
+  static get bodyMediumTealA700 => theme.textTheme.bodyMedium!.copyWith(
+    color: appTheme.tealA700,
+    fontSize: 14.fSize,
+  );
+  static get bodyMedium14 => theme.textTheme.bodyMedium!.copyWith(
+    fontSize: 14.fSize,
+  );
+
+  static get bodySmallWhiteA70012 => theme.textTheme.bodySmall!.copyWith(
+    color: appTheme.whiteA700,
+    fontSize: 12.fSize,
+  );
+  static get bodySmallWhiteA700 => theme.textTheme.bodySmall!.copyWith(
+    color: appTheme.whiteA700,
+    fontSize: 10.fSize,
+  );
+  static get bodySmallWhiteA7009 => theme.textTheme.bodySmall!.copyWith(
+    color: appTheme.whiteA700,
+    fontSize: 9.fSize,
+  );
+
   // Poppins text style
   static get poppinsRedA700 => TextStyle(
         color: appTheme.redA700,

@@ -8,7 +8,7 @@ import 'package:stream_up_live/utils/size_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:zego_uikit/zego_uikit.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/zego_uikit_prebuilt_live_audio_room.dart';
-import 'zego_bottom_bar.dart';
+import 'gift_screen_widgets.dart';
 import '../../theme/app_decoration.dart';
 import '../../theme/custom_text_style.dart';
 import '../../theme/theme_helper.dart';
@@ -80,6 +80,9 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
       ..foreground = _foreground()
       ..topMenuBar.buttons = [
         ZegoLiveAudioRoomMenuBarButtonName.closeSeatButton
+      ]
+      ..bottomMenuBar.hostExtendButtons = [
+        _getGiftButton(context)
       ]
       ..seat.avatarBuilder = (BuildContext context, Size size,
           ZegoUIKitUser? user, Map<String, dynamic>? extraInfo) {
@@ -447,4 +450,52 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
       },
     );
   }
+
+  Widget _getGiftButton(BuildContext context){
+    return CustomIconButton(
+      height: 40.adaptSize,
+      width: 40.adaptSize,
+      padding: EdgeInsets.all(7.h),
+      decoration: IconButtonStyleHelper.fillPink,
+      child: CustomImageView(
+        imagePath: ImageConstant.imgGroup25,
+      ),
+      onTap: (){
+        print("Gift open");
+        _showBottomSheet(context);
+      },
+    );
+  }
+
+  void _showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext builder) {
+          return Container(
+            color: ColorManager.giftScreenColor,
+            width: double.maxFinite,
+            padding: EdgeInsets.symmetric(
+              horizontal: 7.h,
+              vertical: 11.v,
+            ),
+            child: Column(
+              children: [
+                buildPartOne(context),
+                SizedBox(height: 17.v),
+                buildPartTwo(),
+                SizedBox(height: 7.v),
+                buildPartThree(),
+                SizedBox(height: 18.v),
+                buildPartFour(context),
+
+
+              ],
+            ),
+          );
+        }
+    );
+  }
+
 }
+
+

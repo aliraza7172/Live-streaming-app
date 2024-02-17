@@ -32,6 +32,33 @@ class AppDecoration {
           width: 1.h,
         ),
       );
+
+  static BoxDecoration get outlineIndigoA => BoxDecoration(
+    color: appTheme.black90033.withOpacity(0.15),
+    border: Border.all(
+      color: appTheme.indigoA700,
+      width: 1.h,
+    ),
+  );
+  static BoxDecoration get outlinePurpleA => BoxDecoration(
+    color: appTheme.purpleA100.withOpacity(0.3),
+    border: Border.all(
+      color: appTheme.purpleA100,
+      width: 1.h,
+    ),
+  );
+
+  // Gradient decorations
+  static BoxDecoration get gradientLightGreenAToPinkA => BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment(0, 0),
+      end: Alignment(1, 1),
+      colors: [
+        appTheme.lightGreenA200,
+        appTheme.pinkA400,
+      ],
+    ),
+  );
 }
 
 class BorderRadiusStyle {
@@ -50,6 +77,15 @@ class BorderRadiusStyle {
   static BorderRadius get roundedBorder8 => BorderRadius.circular(
         8.h,
       );
+
+  // Rounded borders
+  static BorderRadius get roundedBorder11 => BorderRadius.circular(
+    11.h,
+  );
+
+  static BorderRadius get customBorderLR15 => BorderRadius.horizontal(
+    right: Radius.circular(15.h),
+  );
 }
 
 // Comment/Uncomment the below code based on your Flutter SDK version.
