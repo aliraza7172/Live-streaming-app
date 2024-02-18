@@ -54,6 +54,13 @@ class ImageAssets {
   static const String radioUser2Image = "$IMAGE_PATH/liveRadio2.png";
   static const String radioUser3Image = "$IMAGE_PATH/liveRadio3.png";
   static const String radioUser4Image = "$IMAGE_PATH/liveRadio4.png";
+  static const String profileImage = "$IMAGE_PATH/profile_img.png";
+  static const String ringImage = "$IMAGE_PATH/ring.png";
+  static const String diamondImage = "$IMAGE_PATH/diamond.png";
+  static const String Ellipse23Image = "$IMAGE_PATH/Ellipse 23.png";
+  static const String FrameImage = "$IMAGE_PATH/Frame.png";
+  static const String Frame0Image = "$IMAGE_PATH/Frame(0).png";
+
   static const String profilebackgroundImage =
       "$IMAGE_PATH/profilebackground.png";
   //------------------------------Home view End----------------

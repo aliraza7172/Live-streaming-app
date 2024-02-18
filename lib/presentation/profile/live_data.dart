@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../resources/assets_manager.dart';
+
 class LiveDataScreen extends StatefulWidget {
   @override
   _LiveDataScreenState createState() => _LiveDataScreenState();
@@ -54,7 +56,7 @@ class _LiveDataScreenState extends State<LiveDataScreen> with SingleTickerProvid
                           width: 90, // Adjust width as needed for smaller image
                           height: 90, // Adjust height as needed for smaller image
                           child: Image.asset(
-                            'assets/profile_img.png', // Replace with your image
+                            ImageAssets.profileImage,
                             fit: BoxFit.cover, // Adjust image fit as needed
                           ),
                         ),
@@ -64,7 +66,7 @@ class _LiveDataScreenState extends State<LiveDataScreen> with SingleTickerProvid
                     Positioned(
                       top: -21, // Adjust positioning as needed
                       child: Image.asset(
-                        'assets/ring.png', // Replace 'your_image.png' with your image path
+                        ImageAssets.ringImage,
                         height: 132, // Adjust height as needed
                       ),
                     ),
@@ -245,7 +247,7 @@ class _LiveDataScreenState extends State<LiveDataScreen> with SingleTickerProvid
                           ),
                           SizedBox(width: 45),
                           Image.asset(
-                            'assets/diamond.png', // Replace 'your_image.png' with your image path
+                            ImageAssets.diamondImage,
                             width: 24, // Adjust width as needed
                             height: 24, // Adjust height as needed
                           ),
@@ -339,23 +341,28 @@ class _LiveDataScreenState extends State<LiveDataScreen> with SingleTickerProvid
                         topRight: Radius.circular(15),
                       ),
                     ),
-                    child: TabBar(
-                      controller: _tabController,
-                      indicator: BoxDecoration(
-                        color: Colors.green, // Change the color of the selected tab
-                        borderRadius: BorderRadius.circular(15),
+                    child: SizedBox(
+                      width: 400, // Adjust width as needed
+                      child: TabBar(
+                        controller: _tabController,
+                        indicator: BoxDecoration(
+                          color: Colors.green, // Change the color of the selected tab
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        labelColor: Colors.black, // Set tab text color to black
+                        unselectedLabelColor: Colors.black,
+                        labelStyle: TextStyle(fontSize: 7), // Reduce font size of tab text
+                        tabs: [
+                          Tab(text: 'Weekly \n7 days'),
+                          Tab(text: '  1 to 15 \n1st Half Month'),
+                          Tab(text: '  16 to 30 \n2nd Half Month'),
+                          Tab(text: 'Monthly'),
+                        ],
                       ),
-                      labelColor: Colors.black, // Set tab text color to black
-                      unselectedLabelColor: Colors.black,
-                      labelStyle: TextStyle(fontSize: 7), // Reduce font size of tab text
-                      tabs: [
-                        Tab(text: 'Weekly \n7 days'),
-                        Tab(text: '  1 to 15 \n1st Half Month'),
-                        Tab(text: '  16 to 30 \n2nd Half Month'),
-                        Tab(text: 'Monthly'),
-                      ],
                     ),
                   ),
+
                   Expanded(
                     child: TabBarView(
                       controller: _tabController,
@@ -400,7 +407,7 @@ class _LiveDataScreenState extends State<LiveDataScreen> with SingleTickerProvid
                           width: 30, // Adjust width as needed for smaller image
                           height: 30, // Adjust height as needed for smaller image
                           child: Image.asset(
-                            'assets/profile_img.png', // Replace with your image
+                            ImageAssets.profileImage,
                             fit: BoxFit.cover, // Adjust image fit as needed
                           ),
                         ),
@@ -410,7 +417,7 @@ class _LiveDataScreenState extends State<LiveDataScreen> with SingleTickerProvid
                     Positioned(
                       top: 0, // Adjust positioning as needed
                       child: Image.asset(
-                        'assets/ring.png', // Replace 'your_image.png' with your image path
+                        ImageAssets.ringImage,
                         height: 50, // Adjust height as needed
                       ),
                     ),
@@ -420,7 +427,7 @@ class _LiveDataScreenState extends State<LiveDataScreen> with SingleTickerProvid
                 Text('Md Sakib Khan',style: TextStyle(color: Colors.black),), // Replace with the name
                 SizedBox(width: 20),
                 Image.asset(
-                  'assets/diamond.png', // Replace 'your_image.png' with your image path
+                  ImageAssets.diamondImage,
                   width: 24, // Adjust width as needed
                   height: 24, // Adjust height as needed
                 ),

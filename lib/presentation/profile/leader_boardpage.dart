@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../resources/assets_manager.dart';
+
 class LeaderboardPage extends StatefulWidget {
   @override
   _LeaderboardPageState createState() => _LeaderboardPageState();
@@ -71,13 +73,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
           ),
 
           SizedBox(height: 20),
-          Container(
-            height: 40,
-            width: 300,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-            ),
+          _buildRoundedTabContainer(
             child: TabBar(
               controller: _mainTabController,
               indicator: BoxDecoration(
@@ -91,16 +87,11 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                 Tab(text: 'Gifters'),
                 Tab(text: 'Family'),
               ],
+              indicatorSize: TabBarIndicatorSize.tab, // Set indicatorSize to TabBarIndicatorSize.tab
             ),
           ),
           SizedBox(height: 20),
-          Container(
-            height: 40,
-            width: 340,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-            ),
+          _buildRoundedTabContainer(
             child: TabBar(
               controller: _subTabController,
               indicator: BoxDecoration(
@@ -110,13 +101,37 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
               labelColor: Colors.white,
               unselectedLabelColor: Colors.black,
               tabs: [
-                Tab(text: 'Weekly'),
-                Tab(text: '1 to 15'),
-                Tab(text: '16 to 30'),
-                Tab(text: 'Monthly'),
+                Tab(
+                  child: Text(
+                    'Weekly',
+                    style: TextStyle(fontSize: 12), // Adjust the font size here
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    '1 to 15',
+                    style: TextStyle(fontSize: 12), // Adjust the font size here
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    '16 to 30',
+                    style: TextStyle(fontSize: 12), // Adjust the font size here
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    'Monthly',
+                    style: TextStyle(fontSize: 12), // Adjust the font size here
+                  ),
+                ),
               ],
+              indicatorSize: TabBarIndicatorSize.tab, // Set indicatorSize to TabBarIndicatorSize.tab
             ),
+            width: 340, // Specify the desired width here
+
           ),
+
           SizedBox(height: 20),
           Expanded(
             child: TabBarView(
@@ -125,7 +140,34 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                 TabBarView(
                   controller: _subTabController,
                   children: [
-                    // Modified content for Receiver - Weekly tab
+                    // Modified content for Gifters - Weekly tab
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildImageWithText(1, false),
+                        _buildImageWithText(2, true),
+                        _buildImageWithText(3, false),
+                      ],
+                    ),
+                    // Modified content for Gifters - 1 to 15 tab
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildImageWithText(1, false),
+                        _buildImageWithText(2, true),
+                        _buildImageWithText(3, false),
+                      ],
+                    ),
+                    // Modified content for Gifters - 16 to 30 tab
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildImageWithText(1, false),
+                        _buildImageWithText(2, true),
+                        _buildImageWithText(3, false),
+                      ],
+                    ),
+                    // Modified content for Gifters - Monthly tab
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -136,87 +178,36 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                     ),
                   ],
                 ),
-                TabBarView(
-                  controller: _subTabController,
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text('Gifters - Weekly tab content',
-                          style: TextStyle(color: Colors.white)),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text('Gifters - 1 to 15 tab content',
-                          style: TextStyle(color: Colors.white)),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text('Gifters - 16 to 30 tab content',
-                          style: TextStyle(color: Colors.white)),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text('Gifters - Monthly tab content',
-                          style: TextStyle(color: Colors.white)),
-                    ),
-                  ],
-                ),
-                TabBarView(
-                  controller: _subTabController,
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text('Family - Weekly tab content',
-                          style: TextStyle(color: Colors.white)),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text('Family - 1 to 15 tab content',
-                          style: TextStyle(color: Colors.white)),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text('Family - 16 to 30 tab content',
-                          style: TextStyle(color: Colors.white)),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      child: Text('Family - Monthly tab content',
-                          style: TextStyle(color: Colors.white)),
-                    ),
-                  ],
-                ),
+
               ],
             ),
           ),
           Container(
-              height: 410, // Set a fixed height or use Expanded to fit available space
+            height: 400, // Set a fixed height or use Expanded to fit available space
             padding: EdgeInsets.all(10),
             child: ListView(
               children: [
-                  _buildLeaderboardRow(4, 'Emon Khan', 'assets/profile_img.png', '29238'),
-                  SizedBox(height: 10),
-                  _buildLeaderboardRow(5, 'Emon Khan', 'assets/profile_img.png', '45321'),
-                  SizedBox(height: 10),
-                  _buildLeaderboardRow(6, 'Emon khan', 'assets/profile_img.png', '13223'),
-                  SizedBox(height: 10),
-                  _buildLeaderboardRow(5, 'Emon Khan', 'assets/profile_img.png', '45321'),
-                  SizedBox(height: 10),
-                  _buildLeaderboardRow(6, 'Emon khan', 'assets/profile_img.png', '13223'),
-                  SizedBox(height: 10),
-                  _buildLeaderboardRow(5, 'Emon Khan', 'assets/profile_img.png', '45321'),
-                  SizedBox(height: 10),
-                  _buildLeaderboardRow(6, 'Emon khan', 'assets/profile_img.png', '13223'),
-                ],
-
-              ),
+                _buildLeaderboardRow(4, 'Emon Khan', ImageAssets.profileImage, '29238'),
+                SizedBox(height: 10),
+                _buildLeaderboardRow(5, 'Emon Khan', ImageAssets.profileImage, '45321'),
+                SizedBox(height: 10),
+                _buildLeaderboardRow(6, 'Emon khan', ImageAssets.profileImage, '13223'),
+                SizedBox(height: 10),
+                _buildLeaderboardRow(5, 'Emon Khan', ImageAssets.profileImage, '45321'),
+                SizedBox(height: 10),
+                _buildLeaderboardRow(6, 'Emon khan', ImageAssets.profileImage, '13223'),
+                SizedBox(height: 10),
+                _buildLeaderboardRow(5, 'Emon Khan', ImageAssets.profileImage, '45321'),
+                SizedBox(height: 10),
+                _buildLeaderboardRow(6, 'Emon khan', ImageAssets.profileImage, '13223'),
+              ],
             ),
-
-
+          ),
         ],
       ),
     );
   }
+
   Widget _buildLeaderboardRow(int number, String name, String imagePath, String diamondNumber) {
     return Row(
       children: [
@@ -236,17 +227,16 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
                   width: 30, // Adjust width as needed for smaller image
                   height: 30, // Adjust height as needed for smaller image
                   child: Image.asset(
-                    'assets/profile_img.png', // Replace with your image
+                    ImageAssets.profileImage,
                     fit: BoxFit.cover, // Adjust image fit as needed
                   ),
                 ),
               ),
             ),
-
             Positioned(
               top: -6, // Adjust positioning as needed
               child: Image.asset(
-                'assets/ring.png', // Replace 'your_image.png' with your image path
+                ImageAssets.ringImage,
                 height: 52, // Adjust height as needed
               ),
             ),
@@ -259,7 +249,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
         ),
         SizedBox(width: 50),
         Image.asset(
-          'assets/diamond.png', // Replace 'your_image.png' with your image path
+          ImageAssets.diamondImage,
           width: 24, // Adjust width as needed
           height: 24, // Adjust height as needed
         ),
@@ -268,10 +258,10 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
           diamondNumber,
           style: TextStyle(color: Colors.white, fontSize: 16),
         ),
-
       ],
     );
   }
+
   Widget _buildImageWithText(int imageNumber, bool isCenter) {
     String name = '';
     String imagePath = '';
@@ -282,20 +272,19 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     switch (imageNumber) {
       case 1:
         name = 'Ali';
-        imagePath = 'assets/profile_img.png'; // Path to Ali's image
+        imagePath = ImageAssets.profileImage;
         number = '298292';
         break;
       case 2:
         name = 'Raza';
-        imagePath = 'assets/profile_img.png'; // Path to Raza's image
+        imagePath = ImageAssets.profileImage;
         number = '1721927';
         ringHeight = 150.0; // Increase ring height for Raza
         avatarRadius = 60.0; // Increase radius for Raza
-
         break;
       case 3:
         name = 'Hamza';
-        imagePath = 'assets/profile_img.png'; // Path to Hamza's image
+        imagePath = ImageAssets.profileImage;
         number = '83728';
         break;
       default:
@@ -324,7 +313,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
             Positioned(
               top: -16, // Adjust positioning as needed
               child: Image.asset(
-                'assets/ring.png', // Replace 'your_image.png' with your image path
+                ImageAssets.ringImage,
                 height: ringHeight, // Use the determined ring height
               ),
             ),
@@ -340,7 +329,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/diamond.png', // Replace 'your_image.png' with your image path
+              ImageAssets.diamondImage,
               width: 20, // Adjust width as needed
               height: 20, // Adjust height as needed
             ),
@@ -355,5 +344,16 @@ class _LeaderboardPageState extends State<LeaderboardPage> with TickerProviderSt
     );
   }
 
+  Widget _buildRoundedTabContainer({required Widget child, double width = 300}) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        height: 40,
+        width: width, // Adjust the width here
+        color: Colors.white,
+        child: child,
+      ),
+    );
+  }
 
 }
