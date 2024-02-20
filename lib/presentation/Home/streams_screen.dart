@@ -5,6 +5,7 @@ import 'package:stream_up_live/widgets/toggle_button_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../widgets/gameWidget.dart';
 import '../../widgets/index_widget.dart';
 import '../resources/index_manager.dart';
 import '../resources/list.dart';
@@ -43,14 +44,18 @@ class _StreamsViewState extends State<StreamsView> {
                   ? AppStrings.popular
                   : selectedid == 2
                       ? AppStrings.pkVideos
-                      : selectedid == 3
-                          ? AppStrings.Events
-                          : AppStrings.Party),
+              : selectedid == 3
+              ? AppStrings.Events
+              : selectedid == 4
+              ? AppStrings.Game // New category "Game"
+              : AppStrings.Party),
           /*--------------------Fresher button list--------------------------------------- */
           selectedid == 2
               ? PkVideosWidget()
               : selectedid == 3
                   ? EventsListWidget()
+              : selectedid == 4 // Add condition for "Game" category
+              ? GamePage()
                   : Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8.0, vertical: 5.0),
@@ -232,9 +237,16 @@ class _StreamsViewState extends State<StreamsView> {
         setState(() {
           selectedid = index;
         });
-        //pageController.jumpToPage(index);
       },
-      categories: Lists.categories,
+      categories: [
+        // Add "Game" category to the list of categories
+        AppStrings.freshers,
+        AppStrings.popular,
+        AppStrings.pkVideos,
+        AppStrings.Events,
+        AppStrings.Game,
+        AppStrings.Party,
+      ],
     );
   }
 }

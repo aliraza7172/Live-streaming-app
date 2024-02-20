@@ -47,6 +47,7 @@ class AppStrings {
   static const String Status = "Status";
   static const String Squad = "Squad";
   static const String Party = "Party";
+  static const String Game = "Game";
   static const String email = "Email";
   static const String record = "Record";
   static const String follow = "Follow";

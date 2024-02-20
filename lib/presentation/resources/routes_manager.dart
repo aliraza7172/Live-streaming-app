@@ -34,6 +34,7 @@ import 'package:stream_up_live/presentation/stories/open_story_screen.dart';
 import 'package:stream_up_live/presentation/stories/stories_screen.dart';
 import 'package:stream_up_live/presentation/welathClass/wealth_class_screen.dart';
 import '../../data/Live_Streaming/live_streaming.dart';
+import '../../widgets/gameWidget.dart';
 import '../Setting/blocked_list_screen.dart';
 import '../Setting/faqs_screen.dart';
 import '../Setting/inbox_screen.dart';
@@ -61,6 +62,8 @@ class Routes {
   // static const String topTalentviewRoute = "/TopTalentview";
   // static const String newStartviewRoute = "/NewStartview";
   static const String liveViewRoute = "/liveView";
+  static const String GamePageRoute = '/GamePage'; // Define the route for GamePage
+
   // static const String recordsViewRoute = "/recordsView";
   static const String peopleLiveRoute = "/PeopleLive";
   static const String verifiedCodeRoute = "/verifiedCode";
@@ -229,6 +232,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => LeaderboardPage());
       case Routes.MyLevelPageRoute:
         return MaterialPageRoute(builder: (_) => MylevelPage());
+      case Routes.GamePageRoute:
+        return MaterialPageRoute(builder: (_) => GamePage());
       case Routes.LiveStreamingBasePage:
         return MaterialPageRoute(
           builder: (_) => LiveStreamingBasePage(),

@@ -65,6 +65,14 @@ class Lists {
     ImageAssets.radioUser2Image,
     ImageAssets.radioUser3Image,
   ];
+  static List GameImages = [
+    ImageAssets.gameImage,
+    ImageAssets.game1Image,
+    ImageAssets.radioUser2Image,
+    ImageAssets.radioUser3Image,
+    ImageAssets.radioUser2Image,
+    ImageAssets.radioUser3Image,
+  ];
   static List<String> storiesname = <String>[
     "Dan Brian",
     "Ramon Miles",
@@ -108,6 +116,8 @@ class Lists {
     AppStrings.pkVideos,
     AppStrings.Events,
     AppStrings.Party,
+    AppStrings.Game,
+
   ];
 
   static List FresherUserList = [

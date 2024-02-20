@@ -60,6 +60,8 @@ class ImageAssets {
   static const String Ellipse23Image = "$IMAGE_PATH/Ellipse 23.png";
   static const String FrameImage = "$IMAGE_PATH/Frame.png";
   static const String Frame0Image = "$IMAGE_PATH/Frame(0).png";
+  static const String gameImage = "$IMAGE_PATH/game.jpg";
+  static const String game1Image = "$IMAGE_PATH/game1.jpg";
 
   static const String profilebackgroundImage =
       "$IMAGE_PATH/profilebackground.png";
