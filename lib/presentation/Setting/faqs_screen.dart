@@ -3,6 +3,7 @@
 import 'package:stream_up_live/presentation/Mixins/size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:stream_up_live/presentation/resources/index_manager.dart';
 
 import '../../widgets/custom_divider.dart';
 import '../resources/assets_manager.dart';
@@ -78,7 +79,7 @@ class _FAQsScreenState extends State<FAQsScreen> {
             ),
           ),
           customeListTile(
-              title: "stream_up_live",
+              title: AppStrings.APP_NAME,
               onTap: () {},
               trailing: ImageAssets.downwardIcon),
           Padding(

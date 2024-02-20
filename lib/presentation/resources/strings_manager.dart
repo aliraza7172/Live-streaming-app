@@ -1,4 +1,5 @@
 class AppStrings {
+  static const String APP_NAME = "YAMMY LIVE";
   static const String PK = "PK";
   static const String me = "Me";
   static const String New = "New";
@@ -34,7 +35,7 @@ class AppStrings {
   static const String topUsers = "Top Users";
   static const String topTalents = "Top Talents";
   static const String newStar = "New Star";
-  static const String weekelystar = "Weekely Star";
+  static const String weekelystar = "Weekly Star";
   static const String combo = "combo";
   static const String sendTo = "send To";
   static const String specialEvent = "Special Event";
@@ -91,7 +92,7 @@ class AppStrings {
   static const String spotlight = "spotlight";
   static const String enterCode = "Enter Code";
   static const String bangladesh = "Bangladesh";
-  static const String exoloreNow = "Exolore Now";
+  static const String exoloreNow = "Explore Now";
   static const String youMayLike = "You May Like";
   static const String multiPHost = "Multiple Host";
   static const String iWeeklyStar = "I Weekly Star";
@@ -124,7 +125,7 @@ class AppStrings {
   //---------------------------------profile----------
 
   static const String toSolve = "To Solve Topup issue please go to ";
-  static const String fedback = "feedbak ";
+  static const String fedback = "feedback ";
   static const String page = "page ";
   static const String continueText = "Continue";
 //-------------------------------------------Home----------------

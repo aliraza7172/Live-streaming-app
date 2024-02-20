@@ -74,7 +74,7 @@ class _DeshboardViewState extends State<DeshboardView> {
                                       return Builder(
                                         builder: (BuildContext context) {
                                           return CachedNetworkImage(
-                                            fit: BoxFit.cover,
+                                            fit: BoxFit.fitWidth,
                                             imageUrl: AppStrings.imgBaseUrl +
                                                 "/banner/" +
                                                 _.CarouselImages[index],
@@ -97,7 +97,8 @@ class _DeshboardViewState extends State<DeshboardView> {
                                       },
                                       autoPlay: true,
                                       viewportFraction: 1,
-                                      height: AppSize.sizeHeight(context) / 5,
+                                      height: AppSize.sizeHeight(context) / 6,
+
                                     )),
                                 Padding(
                                   padding: EdgeInsets.only(top: AppSize.s10),

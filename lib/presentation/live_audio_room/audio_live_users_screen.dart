@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:get/get.dart';
+import 'package:stream_up_live/controller/live_audio_controller.dart';
 import 'package:stream_up_live/presentation/live_audio_room/circle_image_outer.dart';
 import 'package:stream_up_live/presentation/live_audio_room/circle_image_text.dart';
 import 'package:stream_up_live/presentation/live_audio_room/zego_media.dart';
@@ -36,18 +38,8 @@ class AudioLiveUsersView extends StatefulWidget {
 
 class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
     with SingleTickerProviderStateMixin {
-  List<IconData> customIcons = [
-    Icons.cookie,
-    Icons.phone,
-    Icons.speaker,
-    Icons.air,
-    Icons.blender,
-    Icons.file_copy,
-    Icons.place,
-    Icons.phone_android,
-    Icons.phone_iphone
-  ];
 
+  //final liveAudioController = Get.put(LiveAudioController());
   void initState() {
     super.initState();
   }
@@ -113,9 +105,9 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
           debugPrint('on seat opened');
         },
         onChanged: (
-          Map<int, ZegoUIKitUser> takenSeats,
-          List<int> untakenSeats,
-        ) {
+            Map<int, ZegoUIKitUser> takenSeats,
+            List<int> untakenSeats,
+            ) {
           debugPrint(
             'on seats changed, taken seats:$takenSeats, untaken seats:$untakenSeats',
           );
@@ -206,7 +198,7 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
             ),
             child: Padding(
               padding:
-                  EdgeInsets.only(top: 8.v, right: 7.h, left: 10.h, bottom: 5),
+              EdgeInsets.only(top: 8.v, right: 7.h, left: 10.h, bottom: 5),
               child: Text(
                 'Pranto Khan\n${widget.roomID}',
                 overflow: TextOverflow.ellipsis,
@@ -254,13 +246,13 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
   ZegoLiveAudioRoomSeatConfig getSeatConfig() {
     return ZegoLiveAudioRoomSeatConfig(
         layout: ZegoLiveAudioRoomLayoutConfig(rowConfigs: [
-      ZegoLiveAudioRoomLayoutRowConfig(
-          count: 1, alignment: ZegoLiveAudioRoomLayoutAlignment.center),
-      ZegoLiveAudioRoomLayoutRowConfig(
-          count: 4, alignment: ZegoLiveAudioRoomLayoutAlignment.spaceAround),
-      ZegoLiveAudioRoomLayoutRowConfig(
-          count: 4, alignment: ZegoLiveAudioRoomLayoutAlignment.spaceAround),
-    ]));
+          ZegoLiveAudioRoomLayoutRowConfig(
+              count: 1, alignment: ZegoLiveAudioRoomLayoutAlignment.center),
+          ZegoLiveAudioRoomLayoutRowConfig(
+              count: 4, alignment: ZegoLiveAudioRoomLayoutAlignment.spaceAround),
+          ZegoLiveAudioRoomLayoutRowConfig(
+              count: 4, alignment: ZegoLiveAudioRoomLayoutAlignment.spaceAround),
+        ]));
   }
 
   int getHostSeatIndex() {
@@ -288,7 +280,7 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
         config.rowSpacing = 5;
         config.rowConfigs = List.generate(
           4,
-          (index) => ZegoLiveAudioRoomLayoutRowConfig(
+              (index) => ZegoLiveAudioRoomLayoutRowConfig(
             count: 4,
             alignment: ZegoLiveAudioRoomLayoutAlignment.spaceBetween,
           ),
@@ -307,7 +299,7 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
         config.rowSpacing = 5;
         config.rowConfigs = List.generate(
           8,
-          (index) => ZegoLiveAudioRoomLayoutRowConfig(
+              (index) => ZegoLiveAudioRoomLayoutRowConfig(
             count: 1,
             alignment: ZegoLiveAudioRoomLayoutAlignment.spaceBetween,
           ),
@@ -381,51 +373,51 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
           fontWeight: FontWeight.w500,
         );
         final listMenu = ZegoUIKitPrebuiltLiveAudioRoomController()
-                .seat
-                .localHasHostPermissions
+            .seat
+            .localHasHostPermissions
             ? [
-                GestureDetector(
-                  onTap: () async {
-                    Navigator.of(context).pop();
+          GestureDetector(
+            onTap: () async {
+              Navigator.of(context).pop();
 
-                    ZegoUIKit().removeUserFromRoom(
-                      [user.id],
-                    ).then((result) {
-                      debugPrint('kick out result:$result');
-                    });
-                  },
-                  child: Text(
-                    'Kick Out ${user.name}',
-                    style: textStyle,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    Navigator.of(context).pop();
+              ZegoUIKit().removeUserFromRoom(
+                [user.id],
+              ).then((result) {
+                debugPrint('kick out result:$result');
+              });
+            },
+            child: Text(
+              'Kick Out ${user.name}',
+              style: textStyle,
+            ),
+          ),
+          GestureDetector(
+            onTap: () async {
+              Navigator.of(context).pop();
 
-                    ZegoUIKitPrebuiltLiveAudioRoomController()
-                        .seat
-                        .host
-                        .inviteToTake(user.id)
-                        .then((result) {
-                      debugPrint('invite audience to take seat result:$result');
-                    });
-                  },
-                  child: Text(
-                    'Invite ${user.name} to take seat',
-                    style: textStyle,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text(
-                    'Cancel',
-                    style: textStyle,
-                  ),
-                ),
-              ]
+              ZegoUIKitPrebuiltLiveAudioRoomController()
+                  .seat
+                  .host
+                  .inviteToTake(user.id)
+                  .then((result) {
+                debugPrint('invite audience to take seat result:$result');
+              });
+            },
+            child: Text(
+              'Invite ${user.name} to take seat',
+              style: textStyle,
+            ),
+          ),
+          GestureDetector(
+            onTap: () async {
+              Navigator.of(context).pop();
+            },
+            child: const Text(
+              'Cancel',
+              style: textStyle,
+            ),
+          ),
+        ]
             : [];
         return AnimatedPadding(
           padding: MediaQuery.of(context).viewInsets,
@@ -482,11 +474,13 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
               children: [
                 buildPartOne(context),
                 SizedBox(height: 17.v),
-                buildPartTwo(),
+                 buildPartTwo(),
                 SizedBox(height: 7.v),
                 buildPartThree(),
                 SizedBox(height: 18.v),
                 buildPartFour(context),
+                SizedBox(height: 18.v),
+                buildPartFive(context)
 
 
               ],

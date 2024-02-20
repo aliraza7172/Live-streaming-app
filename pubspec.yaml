@@ -73,6 +73,7 @@ dependencies:
   auto_size_text: ^3.0.0
   zego_uikit: ^2.18.5
   zego_uikit_prebuilt_live_audio_room: ^3.1.3
+  country_flags: ^2.2.0
   # ! Zego Cloud help for a Live Streaming such as (Bigo Live, yalla Ludo)
   video_player: ^2.8.2
   csc_picker: ^0.2.7

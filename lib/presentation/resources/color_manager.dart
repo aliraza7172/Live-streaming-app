@@ -67,6 +67,7 @@ class ColorManager {
   static Color settingsColor = HexColor.fromHex("#51E97A");
   static Color lightWhite = HexColor.fromHex("#AEAECE");
   static Color buttonRed = HexColor.fromHex("#EB372C");
+  static Color locGridColor = HexColor.fromHex("#E0E0E0");
   //------latest colors --------
   static Color kColorDarkGrey = Color.fromRGBO(83, 92, 115, 1);
   static Color kColorDarkestGrey = Color.fromRGBO(48, 55, 73, 1);

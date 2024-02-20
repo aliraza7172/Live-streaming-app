@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stream_up_live/controller/live_audio_controller.dart';
+import 'package:stream_up_live/utils/app_constants.dart';
 import 'package:stream_up_live/utils/size_utils.dart';
 
 import '../../theme/app_decoration.dart';
@@ -167,58 +170,70 @@ Widget _buildSix(
 }
 
 Widget buildPartTwo(){
-  var giftStyle = selectStyle;
-  var backpackStyle = unselectStyle;
-   return  Align(
-     alignment: Alignment.centerLeft,
-     child: Padding(
-       padding: EdgeInsets.only(left: 9.h),
-       child: Row(
-         children: [
-           SizedBox(
-             width: 132.h,
+   return GetBuilder<LiveAudioController>(
+       init: LiveAudioController(),
+       builder: (controller){
+         return  Align(
+           alignment: Alignment.centerLeft,
+           child: Padding(
+             padding: EdgeInsets.only(left: 9.h),
              child: Row(
                children: [
-                 CustomImageView(
-                   imagePath: ImageConstant.imgGiftBox11,
-                   height: 17.adaptSize,
-                   width: 17.adaptSize,
-                   margin: EdgeInsets.only(bottom: 2.v),
-                 ),
-                 GestureDetector(
-                   onTap: (){
+                 SizedBox(
+                   width: 132.h,
+                   child: Row(
+                     children: [
+                       CustomImageView(
+                         imagePath: ImageConstant.imgGiftBox11,
+                         height: 17.adaptSize,
+                         width: 17.adaptSize,
+                         margin: EdgeInsets.only(bottom: 2.v),
+                       ),
+                           GestureDetector(
+                             onTap: (){
+                               controller.changeTextStyle(SelectMode.gift);
+                               controller.update();
+                             },
+                             child: Padding(
+                               padding: EdgeInsets.only(left: 4.h),
+                               child: Text(
+                                 "Gifts",
+                                 style:
+                                 controller.giftStatus.value==1 ? selectStyle : unselectStyle,
+                               ),
+                             ),
+                           ),
+                       Spacer(),
+                       CustomImageView(
 
-                   },
-                   child: Padding(
-                     padding: EdgeInsets.only(left: 4.h),
-                     child: Text(
-                       "Gifts",
-                       style: giftStyle,
-                     ),
+                         imagePath: ImageConstant.imgBackpack11,
+                         height: 17.adaptSize,
+                         width: 17.adaptSize,
+                         margin: EdgeInsets.only(bottom: 2.v),
+                       ),
+                     ],
                    ),
                  ),
-                 Spacer(),
-                 CustomImageView(
+                     GestureDetector(
+                       onTap: (){
+                         controller.changeTextStyle(SelectMode.backpacks);
+                         controller.update();
+                       },
+                       child: Padding(
+                         padding: EdgeInsets.only(left: 8.h),
+                         child: Text(
+                           "Backpacks",
+                            style: controller.backPackStatus.value==1 ? selectStyle : unselectStyle,
+                         ),
+                       ),
+                     )
 
-                   imagePath: ImageConstant.imgBackpack11,
-                   height: 17.adaptSize,
-                   width: 17.adaptSize,
-                   margin: EdgeInsets.only(bottom: 2.v),
-                 ),
                ],
              ),
            ),
-           Padding(
-             padding: EdgeInsets.only(left: 8.h),
-             child: Text(
-               "Backpacks",
-               style: backpackStyle,
-             ),
-           ),
-         ],
-       ),
-     ),
-   );
+         );
+       });
+
 }
 
 Widget buildPartThree(){
@@ -501,7 +516,7 @@ Widget _buildTwentyOne(
   );
 }
 
-Widget buildThirtyNine(BuildContext context) {
+Widget buildPartFive(BuildContext context) {
   return Padding(
     padding: EdgeInsets.only(
       left: 18.h,

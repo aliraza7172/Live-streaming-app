@@ -15,6 +15,11 @@ enum LayoutMode {
   fourPeoples,
 }
 
+enum SelectMode{
+  gift,
+  backpacks
+}
+
 extension LayoutModeExtension on LayoutMode {
   String get text {
     final mapValues = {

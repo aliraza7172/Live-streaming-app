@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
     return ResponsiveSizer(builder: (context, orientation, screenType) {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'YAMMY',
+        title: AppStrings.APP_NAME,
         // themeMode: ThemeMode.system,
         // darkTheme: getApplicationTheme(),
         // theme: getApplicationTheme(),

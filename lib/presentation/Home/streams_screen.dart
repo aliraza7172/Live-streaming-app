@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../widgets/gameWidget.dart';
 import '../../widgets/index_widget.dart';
+import '../../widgets/loc_bottom_widget.dart';
 import '../resources/index_manager.dart';
 import '../resources/list.dart';
 
@@ -28,7 +29,31 @@ class _StreamsViewState extends State<StreamsView> {
           // SizedBox(height: 20.vs),
           AppBarSearchField(),
           /*--------------------Streams--------------------------------------- */
-          heading(AppStrings.streams),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0,right: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                heading(AppStrings.streams),
+                GestureDetector(
+                  onTap: (){
+                    showModalBottomSheet(
+                        context: context,
+                      builder: (BuildContext context) {
+                        return LocBottomWidget();
+                      });
+                  },
+                  child: Icon(
+                    Icons.location_on,
+                    size: 24,
+                    color: ColorManager.white,
+
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
             child: Text(AppStrings.categories,
@@ -43,20 +68,34 @@ class _StreamsViewState extends State<StreamsView> {
               : selectedid == 1
                   ? AppStrings.popular
                   : selectedid == 2
-                      ? AppStrings.pkVideos
-              : selectedid == 3
-              ? AppStrings.Events
-              : selectedid == 4
-              ? AppStrings.Game // New category "Game"
-              : AppStrings.Party),
+                      ? AppStrings.Events
+                      : selectedid == 3
+                          ? AppStrings.Party
+                          : selectedid == 4
+                           ? AppStrings.pkVideos
+                         :selectedid == 5
+                         ? AppStrings.game
+                          : AppStrings.Party),
           /*--------------------Fresher button list--------------------------------------- */
-          selectedid == 2
-              ? PkVideosWidget()
-              : selectedid == 3
-                  ? EventsListWidget()
-              : selectedid == 4 // Add condition for "Game" category
-              ? GamePage()
-                  : Padding(
+
+         selectedid == 2 ?
+           EventsListWidget():
+          // selectedid == 3 ?
+          // EventsListWidget():
+          selectedid == 4 ?
+          PkVideosWidget() :
+          selectedid == 5 ?
+          GamePage() :
+
+          // selectedid == 2
+          //     ? EventsListWidget()
+          //     : selectedid == 4
+          //         ? PkVideosWidget():
+          //      selectedid == 3
+          //         ? EventsListWidget()
+          //     : selectedid == 4 // Add condition for "Game" category
+          //     ? GamePage()
+                  Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8.0, vertical: 5.0),
                       child: GridView.builder(
@@ -237,16 +276,9 @@ class _StreamsViewState extends State<StreamsView> {
         setState(() {
           selectedid = index;
         });
+        //pageController.jumpToPage(index);
       },
-      categories: [
-        // Add "Game" category to the list of categories
-        AppStrings.freshers,
-        AppStrings.popular,
-        AppStrings.pkVideos,
-        AppStrings.Events,
-        AppStrings.Game,
-        AppStrings.Party,
-      ],
+      categories: Lists.categories,
     );
   }
 }

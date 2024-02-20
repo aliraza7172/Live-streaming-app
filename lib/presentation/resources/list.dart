@@ -113,10 +113,10 @@ class Lists {
   static List categories = [
     AppStrings.freshers,
     AppStrings.popular,
-    AppStrings.pkVideos,
     AppStrings.Events,
     AppStrings.Party,
-    AppStrings.Game,
+    AppStrings.pkVideos,
+    AppStrings.game
 
   ];
 
