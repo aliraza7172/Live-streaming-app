@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:522450315379:android:61352657b7af634beba206",
         "android_client_info": {
-          "package_name": "com.stream.stream_up_live"
+          "package_name": "com.hummingbird.yammylive"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "522450315379-r8c6724leo8q5aco8c52m505k7m049bt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.stream.stream_up_live",
+            "package_name": "com.hummingbird.yammylive",
             "certificate_hash": "39d0d3dbf21051059bd5bb4df4f9469842eccff9"
           }
         },

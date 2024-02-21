@@ -373,6 +373,18 @@ class _DeshboardViewState extends State<DeshboardView> {
               ],
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SvgPicture.asset(
+                ImageAssets.facebookIcon,
+                height: 24,
+                width: AppSize.s24,
+                color: ColorManager.white,
+              )
+
+            ],
+          )
         ],
       ),
     );

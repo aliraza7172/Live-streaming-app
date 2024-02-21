@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:country_flags/country_flags.dart';
 import 'package:stream_up_live/presentation/resources/color_manager.dart';
-import 'package:stream_up_live/presentation/resources/font_manager.dart';
 
 
 class LocBottomWidget extends StatelessWidget {
    LocBottomWidget({super.key});
+
   final Map<String, String> locMap = {
     'PK': 'Pakistan',
     'IN': 'India',
     'AF': 'Afghanistan',
     'UA': 'UAE',
-    'BD': 'Bangladesh'
+    'BD': 'Bangladesh',
+    'SA': 'Saudi Arabia',
+    'TR' : 'Turkey',
+    'NP' : 'Nepal',
+    'PH':'Philippines',
+    'DZ' : 'Algeria',
+    'TN':'Tunisia',
+    'CN':'China',
+    'SY':'Syria',
+    'MA':'Morocco',
+    'LB' :'Lebanon',
+    'ID' :'Indonesia'
+
 
     // Add more key-value pairs as needed
   };
@@ -37,7 +49,7 @@ class LocBottomWidget extends StatelessWidget {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: (1 / .3),
+              childAspectRatio: (1 / .36),
               crossAxisCount: 2,
               crossAxisSpacing: 4.0,
               mainAxisSpacing: 4.0,
@@ -46,6 +58,7 @@ class LocBottomWidget extends StatelessWidget {
               String countryCode = locMap.keys.elementAt(index);
               String countryName = locMap[countryCode].toString();
               CountryFlag flag = CountryFlag.fromCountryCode(countryCode);
+
 
               return _buildCountryTile(flag: flag,countryName: countryName);
             },

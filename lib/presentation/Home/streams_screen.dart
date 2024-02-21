@@ -68,33 +68,24 @@ class _StreamsViewState extends State<StreamsView> {
               : selectedid == 1
                   ? AppStrings.popular
                   : selectedid == 2
-                      ? AppStrings.Events
+                      ? AppStrings.Party
                       : selectedid == 3
-                          ? AppStrings.Party
+                          ? AppStrings.game
                           : selectedid == 4
-                           ? AppStrings.pkVideos
+                           ? AppStrings.Events
                          :selectedid == 5
-                         ? AppStrings.game
+                         ? AppStrings.pkVideos
                           : AppStrings.Party),
           /*--------------------Fresher button list--------------------------------------- */
 
-         selectedid == 2 ?
+         selectedid == 4 ?
            EventsListWidget():
           // selectedid == 3 ?
           // EventsListWidget():
-          selectedid == 4 ?
-          PkVideosWidget() :
           selectedid == 5 ?
+          PkVideosWidget() :
+          selectedid == 3 ?
           GamePage() :
-
-          // selectedid == 2
-          //     ? EventsListWidget()
-          //     : selectedid == 4
-          //         ? PkVideosWidget():
-          //      selectedid == 3
-          //         ? EventsListWidget()
-          //     : selectedid == 4 // Add condition for "Game" category
-          //     ? GamePage()
                   Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8.0, vertical: 5.0),
