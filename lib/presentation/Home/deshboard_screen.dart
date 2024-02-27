@@ -3,11 +3,14 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:stream_up_live/controller/dashboard_controller.dart';
 import 'package:stream_up_live/controller/story_view_controller.dart';
 import 'package:stream_up_live/data/model/body/custom_setting_model.dart';
+import 'package:stream_up_live/data/model/body/login_user_model.dart';
 import 'package:stream_up_live/data/model/body/stories_model.dart';
+import 'package:stream_up_live/model/userModel.dart';
 import 'package:stream_up_live/presentation/LivebroadCast/live_broad_cast_page.dart';
 import 'package:stream_up_live/presentation/Mixins/size.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +22,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stream_up_live/widgets/stacked_widget.dart';
 
 import '../resources/list.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class DeshboardView extends StatefulWidget {
   const DeshboardView({Key? key}) : super(key: key);
@@ -30,6 +32,21 @@ class DeshboardView extends StatefulWidget {
 
 class _DeshboardViewState extends State<DeshboardView> {
   final _channelName = "testing";
+  late final TextEditingController commentController;
+  late List<TextEditingController> commentControllers;
+
+  // final TextEditingController commentController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      final DashboardController _controller = Get.find<DashboardController>();
+      final newsFeedModelLength = _controller.newsFeedModel.data?.length ?? 0;
+      commentControllers = List.generate(
+          newsFeedModelLength, (index) => TextEditingController());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +115,6 @@ class _DeshboardViewState extends State<DeshboardView> {
                                       autoPlay: true,
                                       viewportFraction: 1,
                                       height: AppSize.sizeHeight(context) / 6,
-
                                     )),
                                 Padding(
                                   padding: EdgeInsets.only(top: AppSize.s10),
@@ -131,8 +147,16 @@ class _DeshboardViewState extends State<DeshboardView> {
                               ],
                             ),
                           userdetails(
-                              data: _.newsFeedModel.data![index],
-                              controller: _),
+                            data: _.newsFeedModel.data != null &&
+                                    _.newsFeedModel.data!.isNotEmpty
+                                ? _.newsFeedModel.data![index]
+                                : null,
+                            controller: _,
+                            index: index,
+                            commentController: commentControllers.isNotEmpty
+                                ? commentControllers[index]!
+                                : TextEditingController(),
+                          ),
                         ],
                       );
                     }),
@@ -169,7 +193,12 @@ class _DeshboardViewState extends State<DeshboardView> {
     );
   }
 
-  Widget userdetails({NewsFeedData? data, DashboardController? controller}) {
+  Widget userdetails({
+    NewsFeedData? data,
+    DashboardController? controller,
+    required int index,
+    required TextEditingController commentController,
+  }) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 0.0),
       child: Column(
@@ -209,6 +238,7 @@ class _DeshboardViewState extends State<DeshboardView> {
               data.userUsername != null ? data.userUsername : data.userFullName,
               style: getmediumStyle(color: ColorManager.white, fontSize: 12.mv),
             ),
+
             subtitle: Text(
               "2 hours ago",
               style: getmediumStyle(color: ColorManager.grey, fontSize: 10.mv),
@@ -325,6 +355,63 @@ class _DeshboardViewState extends State<DeshboardView> {
                     }),
               ),
             ),
+          ListTile(
+            title: Text(
+              'Likes: ${data.noOfLikes ?? 0}',
+            ),
+            subtitle: Text(
+              'Comments: ${data.noOfComments ?? 0}',
+            ),
+            trailing: Text(
+              'Shares: ${data.noOfShares ?? 0}',
+            ),
+          ),
+
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  controller.toggleLike(index);
+                },
+                icon: Icon(
+                  controller!.newsFeedModel.data![index].isLike ?? false
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                  color: controller.newsFeedModel.data![index].isLike ?? false
+                      ? Colors.red
+                      : Colors.grey,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  controller.showCommentsDialog(index);
+                },
+                icon: Icon(Icons.comment),
+              ),
+              IconButton(
+                onPressed: () {
+                  // Handle share action here
+                },
+                icon: Icon(Icons.share),
+              ),
+            ],
+          ),
+          TextField(
+            controller: commentController,
+            decoration: InputDecoration(
+              hintText: 'Type your comment here...',
+              suffixIcon: IconButton(
+                onPressed: () {
+                  print("Input field tap");
+                  controller.addComment(index, commentController.text);
+                  commentController.clear();
+                  FocusScope.of(context).unfocus(); // Hide the keyboard
+                },
+                icon: Icon(Icons.send),
+              ),
+            ),
+          ),
+
           //stacked images
           Padding(
             padding:
@@ -382,7 +469,6 @@ class _DeshboardViewState extends State<DeshboardView> {
                 width: AppSize.s24,
                 color: ColorManager.white,
               )
-
             ],
           )
         ],

@@ -72,48 +72,48 @@ class Data {
 
   Data(
       {this.baseUrl,
-        this.settings,
-        this.userTypes,
-        this.privacies,
-        this.banners,
-        this.games,
-        this.countryCodes,
-        this.countries,
-        this.provinces,
-        this.cities,
-        this.areas,
-        this.locations,
-        this.audioStreamCategories,
-        this.videoStreamCategories,
-        this.newsCategories,
-        this.blogCategories,
-        this.eventsCategories,
-        this.notificationCategories,
-        this.stories,
-        this.audioStreams,
-        this.videoStreams,
-        this.newsfeeds,
-        this.events,
-        this.messages,
-        this.notifications,
-        this.store,
-        this.freshers,
-        this.populars,
-        this.pKs,
-        this.myFollowers,
-        this.myFollowing,
-        this.myNewsfeeds,
-        this.myBag,
-        this.myLevel,
-        this.myBadges,
-        this.myInvites,
-        this.myEarnings,
-        this.countryHeads,
-        this.admins,
-        this.agencies,
-        this.hosts,
-        this.agents,
-        this.users});
+      this.settings,
+      this.userTypes,
+      this.privacies,
+      this.banners,
+      this.games,
+      this.countryCodes,
+      this.countries,
+      this.provinces,
+      this.cities,
+      this.areas,
+      this.locations,
+      this.audioStreamCategories,
+      this.videoStreamCategories,
+      this.newsCategories,
+      this.blogCategories,
+      this.eventsCategories,
+      this.notificationCategories,
+      this.stories,
+      this.audioStreams,
+      this.videoStreams,
+      this.newsfeeds,
+      this.events,
+      this.messages,
+      this.notifications,
+      this.store,
+      this.freshers,
+      this.populars,
+      this.pKs,
+      this.myFollowers,
+      this.myFollowing,
+      this.myNewsfeeds,
+      this.myBag,
+      this.myLevel,
+      this.myBadges,
+      this.myInvites,
+      this.myEarnings,
+      this.countryHeads,
+      this.admins,
+      this.agencies,
+      this.hosts,
+      this.agents,
+      this.users});
 
   Data.fromJson(Map<String, dynamic> json) {
     baseUrl = json['base_url'];
@@ -311,42 +311,42 @@ class Settings {
 
   Settings(
       {this.id,
-        this.title,
-        this.intro,
-        this.logo,
-        this.icon,
-        this.about,
-        this.aboutPage,
-        this.emailAddress,
-        this.phoneNumber,
-        this.copyright,
-        this.metaTitle,
-        this.metaDescription,
-        this.metaKeywords,
-        this.author,
-        this.thumbnail,
-        this.url,
-        this.countryHeadTermsAndConditions,
-        this.adminTermsAndConditions,
-        this.agencyTermsAndConditions,
-        this.hostTermsAndConditions,
-        this.agentTermsAndConditions,
-        this.userTermsAndConditions,
-        this.facebookLink,
-        this.twitterLink,
-        this.linkedinLink,
-        this.instagramLink,
-        this.appstoreLink,
-        this.playstoreLink,
-        this.status,
-        this.orderBy,
-        this.createdByCompId,
-        this.createdByUserId,
-        this.updatedByUserId,
-        this.deletedByUserId,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt});
+      this.title,
+      this.intro,
+      this.logo,
+      this.icon,
+      this.about,
+      this.aboutPage,
+      this.emailAddress,
+      this.phoneNumber,
+      this.copyright,
+      this.metaTitle,
+      this.metaDescription,
+      this.metaKeywords,
+      this.author,
+      this.thumbnail,
+      this.url,
+      this.countryHeadTermsAndConditions,
+      this.adminTermsAndConditions,
+      this.agencyTermsAndConditions,
+      this.hostTermsAndConditions,
+      this.agentTermsAndConditions,
+      this.userTermsAndConditions,
+      this.facebookLink,
+      this.twitterLink,
+      this.linkedinLink,
+      this.instagramLink,
+      this.appstoreLink,
+      this.playstoreLink,
+      this.status,
+      this.orderBy,
+      this.createdByCompId,
+      this.createdByUserId,
+      this.updatedByUserId,
+      this.deletedByUserId,
+      this.createdAt,
+      this.updatedAt,
+      this.deletedAt});
 
   Settings.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -448,17 +448,17 @@ class UserTypes {
 
   UserTypes(
       {this.id,
-        this.title,
-        this.slug,
-        this.status,
-        this.orderBy,
-        this.createdByCompId,
-        this.createdByUserId,
-        this.updatedByUserId,
-        this.deletedByUserId,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt});
+      this.title,
+      this.slug,
+      this.status,
+      this.orderBy,
+      this.createdByCompId,
+      this.createdByUserId,
+      this.updatedByUserId,
+      this.deletedByUserId,
+      this.createdAt,
+      this.updatedAt,
+      this.deletedAt});
 
   UserTypes.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -511,19 +511,19 @@ class Privacies {
 
   Privacies(
       {this.id,
-        this.title,
-        this.slug,
-        this.type,
-        this.icon,
-        this.status,
-        this.orderBy,
-        this.createdByCompId,
-        this.createdByUserId,
-        this.updatedByUserId,
-        this.deletedByUserId,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt});
+      this.title,
+      this.slug,
+      this.type,
+      this.icon,
+      this.status,
+      this.orderBy,
+      this.createdByCompId,
+      this.createdByUserId,
+      this.updatedByUserId,
+      this.deletedByUserId,
+      this.createdAt,
+      this.updatedAt,
+      this.deletedAt});
 
   Privacies.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -584,24 +584,24 @@ class CountryCodes {
   var deletedAt;
   CountryCodes(
       {this.id,
-        this.countryId,
-        this.countryTitle,
-        this.countrySlug,
-        this.countryTwoLetterCode,
-        this.countryThreeLetterCode,
-        this.countryFlag,
-        this.countryLatitude,
-        this.countryLongitude,
-        this.code,
-        this.status,
-        this.orderBy,
-        this.createdByCompId,
-        this.createdByUserId,
-        this.updatedByUserId,
-        this.deletedByUserId,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt});
+      this.countryId,
+      this.countryTitle,
+      this.countrySlug,
+      this.countryTwoLetterCode,
+      this.countryThreeLetterCode,
+      this.countryFlag,
+      this.countryLatitude,
+      this.countryLongitude,
+      this.code,
+      this.status,
+      this.orderBy,
+      this.createdByCompId,
+      this.createdByUserId,
+      this.updatedByUserId,
+      this.deletedByUserId,
+      this.createdAt,
+      this.updatedAt,
+      this.deletedAt});
 
   CountryCodes.fromJson(Map<dynamic, dynamic> json) {
     id = json['id'];
@@ -673,24 +673,24 @@ class Countries {
 
   Countries(
       {this.id,
-        this.name,
-        this.slug,
-        this.about,
-        this.image,
-        this.twoLetterCode,
-        this.threeLetterCode,
-        this.flag,
-        this.latitude,
-        this.longitude,
-        this.status,
-        this.orderBy,
-        this.createdByCompId,
-        this.createdByUserId,
-        this.updatedByUserId,
-        this.deletedByUserId,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt});
+      this.name,
+      this.slug,
+      this.about,
+      this.image,
+      this.twoLetterCode,
+      this.threeLetterCode,
+      this.flag,
+      this.latitude,
+      this.longitude,
+      this.status,
+      this.orderBy,
+      this.createdByCompId,
+      this.createdByUserId,
+      this.updatedByUserId,
+      this.deletedByUserId,
+      this.createdAt,
+      this.updatedAt,
+      this.deletedAt});
 
   Countries.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -762,24 +762,24 @@ class Provinces {
 
   Provinces(
       {this.id,
-        this.countryId,
-        this.countryName,
-        this.title,
-        this.slug,
-        this.about,
-        this.image,
-        this.twoLetterCode,
-        this.latitude,
-        this.longitude,
-        this.status,
-        this.orderBy,
-        this.createdByCompId,
-        this.createdByUserId,
-        this.updatedByUserId,
-        this.deletedByUserId,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt});
+      this.countryId,
+      this.countryName,
+      this.title,
+      this.slug,
+      this.about,
+      this.image,
+      this.twoLetterCode,
+      this.latitude,
+      this.longitude,
+      this.status,
+      this.orderBy,
+      this.createdByCompId,
+      this.createdByUserId,
+      this.updatedByUserId,
+      this.deletedByUserId,
+      this.createdAt,
+      this.updatedAt,
+      this.deletedAt});
 
   Provinces.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -851,24 +851,24 @@ class Cities {
 
   Cities(
       {this.id,
-        this.provinceId,
-        this.provinceTitle,
-        this.countryId,
-        this.name,
-        this.slug,
-        this.about,
-        this.image,
-        this.latitude,
-        this.longitude,
-        this.status,
-        this.orderBy,
-        this.createdByCompId,
-        this.createdByUserId,
-        this.updatedByUserId,
-        this.deletedByUserId,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt});
+      this.provinceId,
+      this.provinceTitle,
+      this.countryId,
+      this.name,
+      this.slug,
+      this.about,
+      this.image,
+      this.latitude,
+      this.longitude,
+      this.status,
+      this.orderBy,
+      this.createdByCompId,
+      this.createdByUserId,
+      this.updatedByUserId,
+      this.deletedByUserId,
+      this.createdAt,
+      this.updatedAt,
+      this.deletedAt});
 
   Cities.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -941,25 +941,25 @@ class Areas {
 
   Areas(
       {this.id,
-        this.cityId,
-        this.cityName,
-        this.provinceId,
-        this.name,
-        this.slug,
-        this.about,
-        this.image,
-        this.code,
-        this.latitude,
-        this.longitude,
-        this.status,
-        this.orderBy,
-        this.createdByCompId,
-        this.createdByUserId,
-        this.updatedByUserId,
-        this.deletedByUserId,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt});
+      this.cityId,
+      this.cityName,
+      this.provinceId,
+      this.name,
+      this.slug,
+      this.about,
+      this.image,
+      this.code,
+      this.latitude,
+      this.longitude,
+      this.status,
+      this.orderBy,
+      this.createdByCompId,
+      this.createdByUserId,
+      this.updatedByUserId,
+      this.deletedByUserId,
+      this.createdAt,
+      this.updatedAt,
+      this.deletedAt});
 
   Areas.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -1033,24 +1033,24 @@ class Locations {
 
   Locations(
       {this.id,
-        this.areaId,
-        this.areaName,
-        this.cityId,
-        this.name,
-        this.slug,
-        this.about,
-        this.image,
-        this.latitude,
-        this.longitude,
-        this.status,
-        this.orderBy,
-        this.createdByCompId,
-        this.createdByUserId,
-        this.updatedByUserId,
-        this.deletedByUserId,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt});
+      this.areaId,
+      this.areaName,
+      this.cityId,
+      this.name,
+      this.slug,
+      this.about,
+      this.image,
+      this.latitude,
+      this.longitude,
+      this.status,
+      this.orderBy,
+      this.createdByCompId,
+      this.createdByUserId,
+      this.updatedByUserId,
+      this.deletedByUserId,
+      this.createdAt,
+      this.updatedAt,
+      this.deletedAt});
 
   Locations.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -1099,7 +1099,6 @@ class Locations {
   }
 }
 
-
 class NewsFeedModel {
   int? currentPage;
   List<NewsFeedData>? data;
@@ -1114,15 +1113,15 @@ class NewsFeedModel {
 
   NewsFeedModel(
       {this.currentPage,
-        this.data,
-        this.from,
-        this.lastPage,
-        this.nextPageUrl,
-        this.path,
-        this.perPage,
-        this.prevPageUrl,
-        this.to,
-        this.total});
+      this.data,
+      this.from,
+      this.lastPage,
+      this.nextPageUrl,
+      this.path,
+      this.perPage,
+      this.prevPageUrl,
+      this.to,
+      this.total});
 
   NewsFeedModel.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
@@ -1192,43 +1191,45 @@ class NewsFeedData {
   bool? isShare;
   bool? isRepost;
   Likes? likes;
-  Likes? comments;
+  // Likes? comments;
+  List<String>? comments;
   Likes? saves;
 
-  NewsFeedData(
-      {this.id,
-        this.privacyId,
-        this.privacyTitle,
-        this.description,
-        this.thumbnail,
-        this.video,
-        this.type,
-        this.noOfLikes,
-        this.noOfComments,
-        this.noOfShares,
-        this.noOfRepost,
-        this.status,
-        this.orderBy,
-        this.createdByCompId,
-        this.createdByUserId,
-        this.userFullName,
-        this.userImage,
-        this.userUsername,
-        this.userAbout,
-        this.userHeadline,
-        this.updatedByUserId,
-        this.deletedByUserId,
-        this.createdAt,
-        this.updatedAt,
-        this.deletedAt,
-        this.isLike,
-        this.isComment,
-        this.isSave,
-        this.isShare,
-        this.isRepost,
-        this.likes,
-        this.comments,
-        this.saves});
+  NewsFeedData({
+    this.id,
+    this.privacyId,
+    this.privacyTitle,
+    this.description,
+    this.thumbnail,
+    this.video,
+    this.type,
+    this.noOfLikes,
+    this.noOfComments,
+    this.noOfShares,
+    this.noOfRepost,
+    this.status,
+    this.orderBy,
+    this.createdByCompId,
+    this.createdByUserId,
+    this.userFullName,
+    this.userImage,
+    this.userUsername,
+    this.userAbout,
+    this.userHeadline,
+    this.updatedByUserId,
+    this.deletedByUserId,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
+    this.isLike,
+    this.isComment,
+    this.isSave,
+    this.isShare,
+    this.isRepost,
+    this.likes,
+    this.comments,
+    this.saves,
+  });
 
   NewsFeedData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -1263,7 +1264,11 @@ class NewsFeedData {
     isRepost = json['is_repost'];
     likes = json['Likes'] != null ? new Likes.fromJson(json['Likes']) : null;
     comments =
-    json['Comments'] != null ? new Likes.fromJson(json['Comments']) : null;
+        // json['Comments'] != null ? new Likes.fromJson(json['Comments']) : null;
+        json['comments'] != null
+            ? comments = List<String>.from(json['comments'])
+            : null;
+
     saves = json['Saves'] != null ? new Likes.fromJson(json['Saves']) : null;
   }
 
@@ -1303,11 +1308,13 @@ class NewsFeedData {
       data['Likes'] = this.likes!.toJson();
     }
     if (this.comments != null) {
-      data['Comments'] = this.comments!.toJson();
+      // data['Comments'] = this.comments!.toJson();
+      data['comments'] = comments;
     }
     if (this.saves != null) {
       data['Saves'] = this.saves!.toJson();
     }
+
     return data;
   }
 }
@@ -1329,18 +1336,18 @@ class Likes {
 
   Likes(
       {this.currentPage,
-        this.data,
-        this.firstPageUrl,
-        this.from,
-        this.lastPage,
-        this.lastPageUrl,
-        this.links,
-        this.nextPageUrl,
-        this.path,
-        this.perPage,
-        this.prevPageUrl,
-        this.to,
-        this.total});
+      this.data,
+      this.firstPageUrl,
+      this.from,
+      this.lastPage,
+      this.lastPageUrl,
+      this.links,
+      this.nextPageUrl,
+      this.path,
+      this.perPage,
+      this.prevPageUrl,
+      this.to,
+      this.total});
 
   Likes.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
@@ -1412,5 +1419,3 @@ class Links {
     return data;
   }
 }
-
-

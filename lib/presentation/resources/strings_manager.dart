@@ -155,7 +155,9 @@ class AppStrings {
       "Strong passwords include numbers, letters, and punctuation marks.";
 //----------------------------------Api Constants------------
   //static const String appBaseUrl = "https://streamuplive.com/";
-  static const String appBaseUrl = "http://13.200.56.173/";
+  // static const String appBaseUrl = "http://13.200.56.173/";
+  static const String appBaseUrl = "http://13.233.186.246/";
+
   static const String appBaseUrl2 = "https://dmmeghlive.com/api/web/v1/";
   //static const String imgBaseUrl = "https://streamuplive.com/uploads";
   static const String imgBaseUrl = "http://13.200.56.173/uploads";
