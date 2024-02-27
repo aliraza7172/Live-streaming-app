@@ -7,6 +7,7 @@ import 'dart:io';
 import 'package:zego_zimkit/zego_zimkit.dart';
 
 import 'data/Live_Streaming/zego_info.dart';
+import 'utils/app_constants.dart';
 
 Future<void> init() async {
   // Core
@@ -22,7 +23,7 @@ Future<void> init() async {
       : Firebase.initializeApp();
   // initialize ZimKit
   await ZIMKit()
-      .init(appID: ZegoCloudInfo.appID, appSign: ZegoCloudInfo.appSign);
+      .init(appID: zegoAppId, appSign: zegoAppSign);
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await GetStorage.init();

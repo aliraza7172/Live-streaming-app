@@ -155,10 +155,11 @@ class AppStrings {
       "Strong passwords include numbers, letters, and punctuation marks.";
 //----------------------------------Api Constants------------
   //static const String appBaseUrl = "https://streamuplive.com/";
-  static const String appBaseUrl = "http://13.200.56.173/";
+  //static const String appBaseUrl = "http://35.154.164.136/";
+   static const String appBaseUrl = "http://13.233.186.246/";
   static const String appBaseUrl2 = "https://dmmeghlive.com/api/web/v1/";
   //static const String imgBaseUrl = "https://streamuplive.com/uploads";
-  static const String imgBaseUrl = "http://13.200.56.173/uploads";
+  static const String imgBaseUrl = "http://13.233.186.246/uploads";
   static const String LOGIN_URI = "api/mobile/sign-in";
   static const String GENERAL_URI = "api/mobile/general";
   static const String CHECK_EMAIL = "api/mobile/email/check";
@@ -173,6 +174,8 @@ class AppStrings {
   static const String CREATE_POST = "api/mobile/newsfeed/general/create";
   static const String CREATE_STORY = "api/mobile/story/create";
   static const String SEND_SMS = "api/mobile/message/send";
+
+  static const String CREATE_LIVE_CHAT = "api/mobile/chats/create";
 //----------------------------------Storage Keys------------
 }
 

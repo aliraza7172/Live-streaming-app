@@ -24,12 +24,16 @@ class AudioLiveUsersView extends StatefulWidget {
   final String roomID;
   final bool isHost;
   final LayoutMode layoutMode;
+  final String title;
+  final String username;
 
   const AudioLiveUsersView({
     Key? key,
     required this.roomID,
     this.layoutMode = LayoutMode.defaultLayout,
     this.isHost = false,
+    this.title = "",
+    required this.username
   }) : super(key: key);
 
   @override
@@ -38,7 +42,6 @@ class AudioLiveUsersView extends StatefulWidget {
 
 class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
     with SingleTickerProviderStateMixin {
-
   //final liveAudioController = Get.put(LiveAudioController());
   void initState() {
     super.initState();
@@ -48,11 +51,12 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return SafeArea(
+
         child: ZegoUIKitPrebuiltLiveAudioRoom(
           appID: zegoAppId /*input your AppID*/,
           appSign: zegoAppSign /*input your AppSign*/,
           userID: localUserID,
-          userName: 'user_$localUserID',
+          userName: widget.username,
           roomID: widget.roomID,
           events: events,
           config: config,
@@ -74,6 +78,9 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
         ZegoLiveAudioRoomMenuBarButtonName.closeSeatButton
       ]
       ..bottomMenuBar.hostExtendButtons = [
+        _getGiftButton(context)
+      ]
+      ..bottomMenuBar.audienceExtendButtons = [
         _getGiftButton(context)
       ]
       ..seat.avatarBuilder = (BuildContext context, Size size,
@@ -200,7 +207,7 @@ class _AudioLiveUsersViewState extends State<AudioLiveUsersView>
               padding:
               EdgeInsets.only(top: 8.v, right: 7.h, left: 10.h, bottom: 5),
               child: Text(
-                'Pranto Khan\n${widget.roomID}',
+                '${widget.username}\n${widget.roomID}',
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: Colors.white,

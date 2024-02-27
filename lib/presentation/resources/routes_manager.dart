@@ -34,6 +34,7 @@ import 'package:stream_up_live/presentation/stories/open_story_screen.dart';
 import 'package:stream_up_live/presentation/stories/stories_screen.dart';
 import 'package:stream_up_live/presentation/welathClass/wealth_class_screen.dart';
 import '../../data/Live_Streaming/live_streaming.dart';
+import '../../data/Live_Streaming/video_live_streaming.dart';
 import '../../widgets/gameWidget.dart';
 import '../Setting/blocked_list_screen.dart';
 import '../Setting/faqs_screen.dart';
@@ -117,7 +118,7 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
     // Retrieve the arguments
     Map<String, dynamic>? arguments = routeSettings.arguments as Map<String, dynamic>?;
-    print('======routes---${arguments}');
+
 
     switch (routeSettings.name) {
       case Routes.splashRoute:
@@ -179,7 +180,11 @@ class RouteGenerator {
       case Routes.AudioLiveUsersViewRoute:
         return MaterialPageRoute(builder: (_) =>
             AudioLiveUsersView(roomID: arguments?['roomId'],
-              isHost: arguments?['isHost'],));
+              isHost: arguments?['isHost'],
+                title:arguments?['title'],
+                username : arguments?['username']
+            )
+        );
       case Routes.StoriesViewPageRoute:
         return MaterialPageRoute(builder: (_) => StoriesViewPage());
       case Routes.OpenStoryViewRoute:
@@ -235,6 +240,9 @@ class RouteGenerator {
       case Routes.GamePageRoute:
         return MaterialPageRoute(builder: (_) => GamePage());
       case Routes.LiveStreamingBasePage:
+        // return MaterialPageRoute(
+        //   builder: (_) => LivePage(liveID: '1234560',isHost:false),
+        // );
         return MaterialPageRoute(
           builder: (_) => LiveStreamingBasePage(),
         );

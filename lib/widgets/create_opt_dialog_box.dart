@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:get/get.dart';
 import 'package:stream_up_live/data/Live_Streaming/live_streaming.dart';
 import 'package:stream_up_live/presentation/Mixins/size.dart';
 
@@ -136,7 +137,7 @@ class _CustomDialogState extends State<CustomDialog>
               bgcolor: ColorManager.primary,
               prfixicon: ImageAssets.cameraIcon,
               onTap: () {
-                print("object");
+
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -165,10 +166,9 @@ class _CustomDialogState extends State<CustomDialog>
                 // Get.changeTheme(
                 //   Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
                 // );
-                Navigator.pushNamed(
-                  context,
-                  Routes.AudioLiveViewRoute,
-                );
+                _animationController!.reverse();
+                 Get.back();
+                 Get.toNamed(Routes.AudioLiveViewRoute);
               }),
           SizedBox(height: 10.0),
         ]);

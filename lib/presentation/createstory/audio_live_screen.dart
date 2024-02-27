@@ -1,27 +1,18 @@
 // ignore_for_file: deprecated_member_use
+import 'dart:math';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import '../../controller/create_audio_controller.dart';
 import '../../widgets/index_widget.dart';
 import '../resources/index_manager.dart';
 import 'package:stream_up_live/presentation/Mixins/size.dart';
+import 'package:get/get.dart';
 
-class AudioLiveView extends StatefulWidget {
-  const AudioLiveView({Key? key}) : super(key: key);
+class AudioLiveView extends StatelessWidget {
+  final CreateAudioLiveController controller = Get.put(CreateAudioLiveController());
 
-  @override
-  State<AudioLiveView> createState() => _AudioLiveViewState();
-}
-
-class _AudioLiveViewState extends State<AudioLiveView> {
-  List tags = [
-    "#Chat",
-    "#Singing",
-    "#Travel",
-    "#Dancing",
-    "#Dancing",
-    "#Singing"
-  ];
+  final List<String> tags = ["#Chat", "#Singing", "#Travel", "#Dancing", "#Dancing", "#Singing"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,32 +156,46 @@ class _AudioLiveViewState extends State<AudioLiveView> {
                         ),
                         SizedBox(height: 10.0),
                         Container(
+                          margin: EdgeInsets.only(left: 10,right: 10),
                             height: 25,
-                            child: ListView.separated(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: tags.length,
-                              separatorBuilder: (context, i) =>
-                                  SizedBox(width: 5.0),
-                              itemBuilder: (context, index) => Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 0.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: ColorManager.grey,
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 5.0, horizontal: 5.0),
-                                    child: Text(
-                                      tags[index],
-                                      style:
-                                          getRegularStyle(color: Colors.white),
+                            child:  ListView.separated(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: tags.length,
+                                separatorBuilder: (context, i) =>
+                                    SizedBox(width: 5.0),
+                                itemBuilder: (context, index) =>
+                                    Obx(
+                                          ()=> InkWell(
+                                        onTap: (){
+                                          controller.selectedTags.contains(tags[index].toString())
+                                              ? controller.selectedTags.remove(tags[index].toString())
+                                              : controller.selectedTags.add(tags[index].toString());
+                                        },
+                                        child: Padding(
+                                         padding:
+                                          const EdgeInsets.symmetric(horizontal: 0.0),
+                                         child: Container(
+                                         decoration: BoxDecoration(
+                                           color:  controller.selectedTags.contains(tags[index])
+                                               ? ColorManager.darkGrey : ColorManager.grey,
+                                           // color: ColorManager.grey,
+                                            borderRadius:
+                                                BorderRadius.circular(20.0)),
+                                          child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 5.0, horizontal: 5.0),
+                                           child: Text(
+                                            tags[index],
+                                            style:
+                                                getRegularStyle(color: Colors.white),
+                                          ),
+                                        ),
+                                                                          ),
+                                                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
                               ),
-                            )),
+                            ),
                         inputFiled(),
                       ],
                     ),
@@ -211,7 +216,7 @@ class _AudioLiveViewState extends State<AudioLiveView> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          width: AppSize.sizeWidth(context),
+          width: AppSize.sizeWidth(Get.context!),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -219,7 +224,7 @@ class _AudioLiveViewState extends State<AudioLiveView> {
               //---------------Go live Button-----------------
               Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: AppSize.sizeWidth(context) * 0.10,
+                    horizontal: AppSize.sizeWidth(Get.context!) * 0.10,
                     vertical: 10.0),
                 child: CustomButton(
                     color: ColorManager.primary,
@@ -229,10 +234,9 @@ class _AudioLiveViewState extends State<AudioLiveView> {
                       fontSize: AppSize.s12.mv,
                     ),
                     onTap: () {
-                      Navigator.pushNamed(
-                          context, Routes.AudioLiveUsersViewRoute,
-                          arguments: {'roomId':'11223344','isHost':true}
-                      );
+
+                      controller.startLive();
+
                     }),
               ),
               SizedBox(height: 10.0),
@@ -311,6 +315,7 @@ class _AudioLiveViewState extends State<AudioLiveView> {
       padding: const EdgeInsets.all(8.0),
       child: TextField(
         // maxLines: 2,
+        controller: controller.titleController,
         style: TextStyle(color: ColorManager.white),
         decoration: InputDecoration(
           hintText: 'Enter a text',
